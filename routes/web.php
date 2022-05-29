@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SuccessController;
+use App\Http\Controllers\KycController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\DepositController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,8 +27,15 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+/* Route::get('/kyc', function () {
+    return view('kyc');
+})->middleware(['auth', 'verified'])->name('kyc'); */
+
 require __DIR__.'/auth.php';
 
-//Route::get('success', [SuccessController::class, 'index']);
+Route::get('/kyc', [KycController::class, 'create'])->middleware(['auth', 'verified'])->name('kyc');
+Route::post('/kycinfo', [KycController::class, 'store'])->middleware(['auth', 'verified'])->name('kycinfo');
+Route::get('/transaction', [TransactionController::class, 'create'])->middleware(['auth', 'verified'])->name('transaction');
+Route::get('/deposit', [DepositController::class, 'create'])->middleware(['auth', 'verified'])->name('deposit');
 
 
