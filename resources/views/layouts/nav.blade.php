@@ -147,9 +147,9 @@
                     <li><a href="{{url('dashboard')}}"><em class="ti ti-dashboard"></em>Dashboard</a></li>
                     <li><a href="{{url('kyc')}}"><em class="ti ti-files"></em>KYC Application</a></li>
                     <li><a href="{{url('deposit')}}"><em class="ti ti-user"></em>Deposit</a></li>
-                    <li><a href="account.html"><em class="ti ti-user"></em>Withdraw</a></li>
+                    <li><a href="{{url('withdraw')}}"><em class="ti ti-user"></em>Withdraw</a></li>
                     <li><a href="{{url('/transaction')}}"><em class="ti ti-pie-chart"></em>Buy/Sell Token</a></li>
-                    <li><a href="transactions.html"><em class="ti ti-control-shuffle"></em>Transactions</a></li>
+                    <li><a href="{{url('/transact')}}"><em class="ti ti-control-shuffle"></em>Transactions</a></li>
                     <li><a href="referrals.html"><em class="ti ti-infinite"></em>Referral</a></li>
                     <li><a href="account.html"><em class="ti ti-user"></em>Account</a></li>
                     <li><a href="security.html"><em class="ti ti-lock"></em>Security</a></li>

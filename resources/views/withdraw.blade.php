@@ -30,7 +30,7 @@
                                     <div class="from-step-heading">
                                         <div class="from-step-number">$</div>
                                         <div class="from-step-head">
-                                            <h4>Choose your preferred deposit method</h4>
+                                            <h4>Choose your preferred withdrawal method</h4>
                                             
                                         </div>
                                     </div>
@@ -93,7 +93,11 @@
                                                     <span class="input-note"></span>
                                                 </div><!-- .input-item -->
 
-                                                
+                                                <div class="input-item input-with-label">
+                                                    <label for="token-address" class="input-item-label">Security ID</label>
+                                                    <input class="input-bordered" type="text" id="token-address" name="token-address" value="776908">
+                                                    <span class="input-note"></span>
+                                                </div><!-- .input-item -->
                                                 <!-- .input-item -->
                                             </div><!-- .col -->
                                             
@@ -101,25 +105,28 @@
                                         
                                         <div class="input-item input-with-label" style="display: none;" id="showskrill">
                                             <label for="token-address" class="input-item-label">Skrill Email</label>
-                                            <input class="input-bordered" type="text" id="token-address" name="token-address" value="company skrill email">
+                                            <input class="input-bordered" type="text" id="token-address" name="token-address" value="4">
                                             
                                         </div><!-- .input-item -->
 
                                         <div class="input-item input-with-label" style="display: none;" id="showstack">
                                             <label for="token-address" class="input-item-label">Paystack Email</label>
-                                            <input class="input-bordered" type="text" id="token-address" name="token-address" value="company paystack email">
+                                            <input class="input-bordered" type="text" id="token-address" name="token-address" value="4">
                                             
                                         </div><!-- .input-item -->
+
                                         <div class="input-item input-with-label" style="display: none;" id="showbank">
-                                            <label for="token-address" class="input-item-label">Bank Details</label>
-                                            <input class="input-bordered" type="text" id="token-address" name="token-address" value="Company bank details">
-                                            
+                                            <label for="swalllet" class="input-item-label">Bank Details</label>
+                                            <select class="input-bordered" name="swalllet" id="swalllet">
+                                                <option value="eth">selcet bank</option>
+                                                <option value="dac"></option>
+                                                <option value="bic"></option>
+                                            </select>
                                         </div><!-- .input-item -->
-                                        
 
                                         <div class="input-item input-with-label" style="display: none;" id="showbitcoin">
                                             <label for="token-address" class="input-item-label">Bitcoin address</label>
-                                            <input class="input-bordered" type="text" id="token-address" name="token-address" value="company_btc">
+                                            <input class="input-bordered" type="text" id="token-address" name="token-address" value="client_btc">
                                             
                                         </div><!-- .input-item -->
 
@@ -141,11 +148,11 @@
             <div class="modal-content">
                 <div class="kyc-popup">
                     <h2 class="text-center">Confirm Information</h2> 
-                    <h5 class="text-center">You are about making a total deposit of ## in Naira</h4>
+                    <h5 class="text-center">You are about making a total withdrawal of ## in Naira</h4>
                     <div class="input-item">
                         {{-- <input class="input-checkbox" id="term-condition" type=""> --}}
                         
-                        <center><label for="term-condition">deposit takes 12-24 hrs for confirmation.</center></label>
+                        <center><label for="term-condition">Withdrawal takes 12-24 hrs for confirmation.</center></label>
                     </div>
                     
                    {{--  <div class="input-item">
