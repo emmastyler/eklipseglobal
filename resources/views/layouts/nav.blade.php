@@ -39,9 +39,9 @@
                             </ul>
                             <div class="gaps-1x"></div>
                             <ul class="user-dropdown-links">
-                                <li><a href="account.html"><i class="ti ti-id-badge"></i>My Profile</a></li>
-                                <li><a href="security.html"><i class="ti ti-lock"></i>Security</a></li>
-                                <li><a href="activity.html"><i class="ti ti-eye"></i>Activity</a></li>
+                                <li><a href="{{url('profile')}}"><i class="ti ti-id-badge"></i>My Profile</a></li>
+                                <li><a href="{{url('security')}}"><i class="ti ti-lock"></i>Security</a></li>
+                                <li><a href="{{url('notification')}}"><i class="ti ti-eye"></i>Notification</a></li>
                             </ul>
                             <ul class="user-dropdown-links">
                                 <li>
@@ -102,10 +102,9 @@
                                     </ul>
                                 </div>
                                 <ul class="user-dropdown-links">
-                                    <li><a href="account.html"><i class="ti ti-id-badge"></i>My Profile</a></li>
-                                    <li><a href="security.html"><i class="ti ti-lock"></i>Security</a></li>
-                                    <li><a href="activity.html"><i class="ti ti-eye"></i>Activity</a></li>
-                                </ul>
+                                    <li><a href="{{url('profile')}}"><i class="ti ti-id-badge"></i>My Profile</a></li>
+                                    <li><a href="{{url('security')}}"><i class="ti ti-lock"></i>Security</a></li>
+                                    <li><a href="{{url('notification')}}"><i class="ti ti-eye"></i>Notification</a></li>                                </ul>
                                 <ul class="user-dropdown-links">
                                     <li>
                                         <form method="POST" action="{{ route('logout') }}">
@@ -150,9 +149,12 @@
                     <li><a href="{{url('withdraw')}}"><em class="ti ti-user"></em>Withdraw</a></li>
                     <li><a href="{{url('/transaction')}}"><em class="ti ti-pie-chart"></em>Buy/Sell Token</a></li>
                     <li><a href="{{url('/transact')}}"><em class="ti ti-control-shuffle"></em>Transactions</a></li>
-                    <li><a href="referrals.html"><em class="ti ti-infinite"></em>Referral</a></li>
-                    <li><a href="account.html"><em class="ti ti-user"></em>Account</a></li>
-                    <li><a href="security.html"><em class="ti ti-lock"></em>Security</a></li>
+                    <li><a href="{{url('/coinlock')}}"><em class="ti ti-control-shuffle"></em>Coinlock</a></li>
+                    <li><a href="{{url('/member')}}"><em class="ti ti-control-shuffle"></em>Membership Plan</a></li>
+                    <li><a href="{{url('/staking')}}"><em class="ti ti-control-shuffle"></em>Staking/Investment</a></li>
+                    <li><a href="{{url('/videocontensy')}}"><em class="ti ti-control-shuffle"></em>Video Contensy</a></li>
+                  
+                   
                 </ul><!-- .user-icon-nav -->
                 <div class="user-sidebar-sap"></div><!-- .user-sidebar-sap -->
                 <ul class="user-nav">

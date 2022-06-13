@@ -7,6 +7,16 @@ use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\DepositController;
 use App\Http\Controllers\WithdrawController;
 use App\Http\Controllers\TransactController;
+use App\Http\Controllers\CoinlockController;
+use App\Http\Controllers\MemberController;
+use App\Http\Controllers\StakingController;
+use App\Http\Controllers\VideoController;
+use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\SecurityController;
+use App\Http\Controllers\ProfileController;
+
+
+
 
 
 
@@ -43,4 +53,11 @@ Route::get('/transaction', [TransactionController::class, 'create'])->middleware
 Route::get('/deposit', [DepositController::class, 'create'])->middleware(['auth', 'verified'])->name('deposit');
 Route::get('/withdraw', [WithdrawController::class, 'create'])->middleware(['auth', 'verified'])->name('withdraw');
 Route::resource('transact', TransactController::class)->middleware(['auth', 'verified']);
+Route::resource('coinlock', CoinlockController::class)->middleware(['auth', 'verified']);
+Route::resource('member', MemberController::class)->middleware(['auth', 'verified']);
+Route::resource('staking', StakingController::class)->middleware(['auth', 'verified']);
+Route::resource('notification', NotificationController::class)->middleware(['auth', 'verified']);
+Route::resource('videocontensy', VideoController::class)->middleware(['auth', 'verified']);
+Route::resource('security', SecurityController::class)->middleware(['auth', 'verified']);
+Route::resource('profile', ProfileController::class)->middleware(['auth', 'verified']);
 

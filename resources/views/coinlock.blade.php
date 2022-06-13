@@ -10,7 +10,7 @@
     <!-- Fav Icon  -->
     <link rel="shortcut icon" href="images/favicon.png">
     <!-- Site Title  -->
-    <title>Account | User Center - Eclipse Crypto</title>
+    <title>Coinlock | User Center - Eclipse Crypto</title>
     <!-- Vendor Bundle CSS -->
     <link rel="stylesheet" href="assets/css/vendor.bundle1.css?ver=110">
     <!-- Custom styles for this template -->
@@ -21,22 +21,28 @@
     <!-- Topbar -->
     @include('layouts.nav')
                 
-                            
+                        <form action="{{route('kycinfo')}}" method="post">
+                            @csrf
                             <div class="user-content">
                                 <div class="user-panel">
-                                    <h2 class="user-panel-title">Buy and Sell Eclipse Tokens</h2>
-                                    <form action="{{route('kycinfo')}}" method="post"> 
-                                         @csrf                                      
-                                         <h5 class="user-panel-subtitle"></h5>
+                                    <h2 class="user-panel-title">Lock Eclipse or Naira and earn on the go</h2>
+                                    <hr/>
+                                       
+                                        <div class="from-step-head">
+                                            <h4>Step 1 : Click on any option to proceed.</h4>
+                                            
+                                        </div>
+                                    <form action="#">
+                                        <h5 class="user-panel-subtitle"></h5>
                                         <div class="gaps-1x"></div>
                                         <div class="payment-list">
                                             <div class="row">
                                                 <div class="col-md-6 col-sm-6" >
                                                     <div class="payment-item" onclick="myFunction()">
                                                         <input class="payment-check" type="radio" id="payeth" name="payOption" value="tranxETH" checked>
-                                                        <label for="payeth" style="background-color: rgb(20, 138, 20);  border-color:rgb(20, 138, 20);">
+                                                        <label for="payeth" style="background-color: #99089967;  border-color:#99089967;">
                                                             <div class="payment-icon payment-icon-eth" ><img src="images/icon-ethereum.png" alt="icon"></div>
-                                                            <span class="payment-cur" style="color: white"><b>Buy</b></span>
+                                                            <span class="payment-cur" style="color: white"><b>LOCK NAIRA</b></span>
                                                         </label>
                                                         <span></span>
                                                     </div>
@@ -44,9 +50,9 @@
                                                 <div class="col-md-6 col-sm-6" >
                                                     <div class="payment-item" onclick="myFunction1()">
                                                         <input class="payment-check" type="radio" id="paylightcoin" name="payOption" value="tranxLTC">
-                                                        <label for="paylightcoin" style="background-color: #ee0b0b; border-color:#ee0b0b;">
+                                                        <label for="paylightcoin" style="background-color: #13131352; border-color:#13131352;">
                                                             <div class="payment-icon payment-icon-ltc"><img class="payment-icon" src="images/icon-lightcoin.png" alt="icon"></div>
-                                                            <span class="payment-cur" style="color: white"><b>Sell</b></span>
+                                                            <span class="payment-cur" style="color: white"><b>LOCK ELPS</b></span>
                                                         </label>
                                                         <span></span>
                                                     </div>
@@ -55,6 +61,13 @@
                                             </div><!-- .row -->
                                         </div><!-- .payment-list -->
                                         <div class="gaps-1x"></div>
+                                        <div class="from-step-head">
+                                            <h4>Step 2 : Set your amount and lock days.</h4>
+                                            
+                                        </div>
+                                        <h5 class="user-panel-subtitle" id="buytextp">Set amount of NGN you would like to Lock.
+                                        </h5>
+                                        <p id="buysubtextp">You can lock any amount of NGN and earn interests up to 12% annually</p>
                                         <h5 class="user-panel-subtitle" id="buytext"></h5>
                                         <p id="buysubtext"></p>
                                         <div class="gaps-1x"></div>
@@ -62,18 +75,27 @@
                                             <div class="col-md-8">
                                                 <div class="payment-calculator">
                                                     <div class="payment-get">
-                                                        <label for="paymentGet">Amount of Tokens</label>
-                                                        <div class="payment-input">
+                                                        <label for="paymentGet">Lock Amount</label>
+                                                        <div class="payment-input" id="payinput" style="display: none">
                                                             <input class="input-bordered" type="text" id="paymentGet" value="1200">
                                                             <span class="payment-get-cur payment-cal-cur">ELPS</span>
                                                         </div>
+                                                        <div class="gaps-2x d-md-none"></div>
+                                                        <div class="payment-input"  id="payinput1" style="display: block">
+                                                            <input class="input-bordered" type="text" id="paymentGet" value="1200">
+                                                            <span class="payment-get-cur payment-cal-cur">NGN</span>
+                                                        </div>
                                                     </div>
-                                                    <em class="ti ti-exchange-vertical"></em>
+                                                   
                                                     <div class="payment-from">
-                                                        <label for="paymentFrom">Payment Amount</label>
+                                                        <label for="paymentFrom">Lock days</label>
                                                         <div class="payment-input">
-                                                            <input class="input-bordered" type="text" id="paymentFrom" value="600">
-                                                            <span class="payment-from-cur payment-cal-cur">usd</span>
+                                                            <select class="input-bordered" name="swalllet" id="swalllet">
+                                                                <option value="eth">selcet lock days in months</option>
+                                                                <option value="dac"></option>
+                                                                <option value="bic"></option>
+                                                            </select>
+                                                            <!--<span class="payment-from-cur payment-cal-cur">MONTHS</span>-->
                                                         </div>
                                                     </div>
                                                 </div>
@@ -84,32 +106,44 @@
                                                 <div class="gaps-1x d-md-none"></div>
                                             </div><!-- .col -->
                                         </div><!-- .row -->
+                                        <div class="gaps-2x"></div>
+                                        <div class="payment-calculator-note"><i class="fas fa-info-circle"></i>Summary of coin lock order.</div>
                                         <div class="gaps-1x"></div>
-                                        <div class="payment-calculator-note"><i class="fas fa-info-circle"></i>The calculator helps you to convert required currency to ELPS tokens.</div>
-                                        <div class="gaps-3x"></div>
                                         <div class="payment-summary">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="payment-summary-item payment-summary-final">
-                                                        <h6 class="payment-summary-title">Final Payment</h6>
+                                                        <h6 class="payment-summary-title">Final Lock Amount</h6>
                                                         <div class="payment-summary-info">
-                                                            <span class="payment-summary-amount">600.00</span> <span>usd</span>
+                                                            <span class="payment-summary-amount">600.00</span> <span>NGN</span>
+                                                        </div>
+                                                        <div class="payment-summary-info">
+                                                            <span class="payment-summary-amount"></span> <span>or</span>
+                                                        </div>
+                                                        <div class="payment-summary-info">
+                                                            <span class="payment-summary-amount">30.00</span> <span>ELPS</span>
                                                         </div>
                                                     </div>
                                                 </div><!-- .col -->
                                                
                                                 <div class="col-md-6">
                                                     <div class="payment-summary-item payment-summary-tokens">
-                                                        <h6 class="payment-summary-title">Tokens Received</h6>
+                                                        <h6 class="payment-summary-title">Total interest after ## months</h6>
                                                         <div class="payment-summary-info">
-                                                            <span class="payment-summary-amount">1200</span> <span>ELPS</span>
+                                                            <span class="payment-summary-amount">1200</span> <span>NGN</span>
+                                                        </div>
+                                                        <div class="payment-summary-info">
+                                                            <span class="payment-summary-amount"></span> <span>or</span>
+                                                        </div>
+                                                        <div class="payment-summary-info">
+                                                            <span class="payment-summary-amount">60</span> <span>ELPS</span>
                                                         </div>
                                                     </div>
                                                 </div><!-- .col -->
                                             </div><!-- .row -->
                                         </div><!-- .payment-summary -->
                                         <a href="#" class="btn btn-primary payment-btn" data-bs-toggle="modal" data-bs-target="#tranxETH" style="display: none;" id="buyToken"></a>
-                                    <!-- form -->
+                                   
                                
                     </div><!-- .user-kyc -->
                 </div><!-- .user-content -->
@@ -117,99 +151,63 @@
         </div><!-- .container -->
     </div>
     <!-- UserWraper End -->
+
     <div class="modal fade" id="tranxETH" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="tranx-popup">
-                    <h5>Transaction Details</h5>
-                    <div class="tranx-payment-details">
-                        <p>Hi, Your transaction <strong>(BUY)</strong> is <strong>Pending Payment</strong><br> You will receive <strong>5,470 ELPS</strong> tokens once paid.</p>
-                        <h6>Please make your Payment to the Account below</h6>
-                        <div class="tranx-payment-info">
-                            <span class="tranx-copy-feedback copy-feedback"></span>
-                            <em class="fab fa-ethereum"></em>
-                            <input type="text" class="tranx-payment-address" value="SECURITY ID" disabled>
-                            <button class="tranx-payment-copy copy-clipboard-modal" data-clipboard-text="0x4156d3342d5c385a87d264f90653733592000581"><em class="ti ti-files"></em></button>
-                        </div><!-- .tranx-payment-info -->
-                        <!-- @updated on v1.0.1 -->
-                        <ul class="tranx-info-list">
-                            
-                        </ul><!-- .tranx-info-list -->
-                        <div class="row">
-                            <div class="col-sm-5">
-                                <div class="tranx-info-qr">
-                                    <ul class="btn-grp guttar-20px">
-                                        <li><button class="btn btn-primary" type="submit">I want this token</button></li>
-                                        <li><a href="#" class="btn btn-xs btn-uline btn-uline-danger" data-bs-dismiss="modal">I Don't Want This</a></li>
-                                    </ul>
-                                </div>
-                            </div><!-- .col -->
-                            <div class="col-sm-7">
-                                <div class="note note-info">
-                                    <em class="fas fa-info-circle"></em>
-                                    <p>Transactions may take up to 5 minutes to reflect.</p>
-                                </div>
-                                <div class="gaps-1x"></div>
-                                <div class="note note-danger">
-                                    <em class="fas fa-info-circle"></em>
-                                    <p>Do not make payment through any external exchange platform, all payment must be made on this website.s to reflect.</p>
-                            </div><!-- .col -->
-                        </div><!-- .row -->
-                    </div><!-- .tranx-payment-details -->
-                </div><!-- .tranx-popup -->
+                <div class="kyc-popup">
+                    <h2 class="text-center">Confirm Information</h2> 
+                    <h5 class="text-center">You are about Locking your NGN</h4>
+                   
+                    
+                   {{--  <div class="input-item">
+                        <input class="input-checkbox" id="info-currect" type="checkbox">
+                        <label for="info-currect">All the personal information I have entered is correct.</label>
+                    </div>
+                    <div class="input-item">
+                        <input class="input-checkbox" id="certification" type="checkbox">
+                        <label for="certification">I certify that, I am perticipating in the token distribution event in the capacity of an individual (and benificial owner) and not as an agent (or representative of a third party corporate entity.</label>
+                    </div>
+                    <div class="input-item">
+                        <input class="input-checkbox" id="tokenKnow" type="checkbox">
+                        <label for="tokenKnow">I understand that, I can only in the token distribution event with the wallet address that was entered in the application form.</label>
+                    </div> --}}
+                    <div class="gaps-2x"></div>
+                    <div class="text-center"><button class="btn btn-primary" type="submit">Proceed with Coin Lock</button></div>
+                
+                </div><!-- .modal-content -->
             </div><!-- .modal-content -->
         </div><!-- .modal-dialog -->
-    </div>
-</div>
-
-     <!-- Modal End -->
-     <!-- Modal End -->
+    </div><!-- Modal End -->
+    
     <div class="modal fade" id="tranxLTC" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="tranx-popup">
-                    <h5>Transaction Details</h5>
-                    <div class="tranx-payment-details">
-                        <p>Hi, Your transaction <strong>(SELL)</strong> is <strong>Pending</strong><br> A total of <strong>5,470 ELPS</strong> tokens will be deducted from your account.</p>
-                        <h6>Please make your Payment to the bellow Address</h6>
-                        <div class="tranx-payment-info">
-                            <span class="tranx-copy-feedback copy-feedback"></span>
-                            <em class="fab fa-ethereum"></em>
-                            <input type="text" class="tranx-payment-address" value="0x4156d3342d5c385a87d264f90653733592000581" disabled>
-                            <button class="tranx-payment-copy copy-clipboard-modal" data-clipboard-text="0x4156d3342d5c385a87d264f90653733592000581"><em class="ti ti-files"></em></button>
-                        </div><!-- .tranx-payment-info -->
-                        <!-- @updated on v1.0.1 -->
-                        <div class="gaps-3x"></div>
-                        <div class="row">
-                            <div class="col-sm-5">
-                                <div class="tranx-info-qr">
-                                    
-                                    <ul class="btn-grp guttar-20px">
-                                        <li><button class="btn btn-primary">Sell this token</button></li>
-                                            
-                                    </form>
-                                        <li><a href="#" class="btn btn-xs btn-uline btn-uline-danger" data-bs-dismiss="modal">I Don't Want This</a></li>
-                                    </ul>
-                                </div>
-                            </div><!-- .col -->
-                            <div class="col-sm-7">
-                                <div class="note note-info">
-                                    <em class="fas fa-info-circle"></em>
-                                    <p>Transactions may take up to 5 minutes to reflect.</p>
-                                </div>
-                                <div class="gaps-1x"></div>
-                                <div class="note note-danger">
-                                    <em class="fas fa-info-circle"></em>
-                                    <p>Do not make payment through any external exchange platform, all payment must be made on this website.s to reflect.</p>
-                                </div>
-                            </div><!-- .col -->
-                        </div><!-- .row -->
-                    </div><!-- .tranx-payment-details -->
-                </div><!-- .tranx-popup -->
+                <div class="kyc-popup">
+                    <h2 class="text-center">Confirm Information</h2> 
+                    <h5 class="text-center">You are about Locking your ELPS</h4>
+                    
+                    
+                   {{--  <div class="input-item">
+                        <input class="input-checkbox" id="info-currect" type="checkbox">
+                        <label for="info-currect">All the personal information I have entered is correct.</label>
+                    </div>
+                    <div class="input-item">
+                        <input class="input-checkbox" id="certification" type="checkbox">
+                        <label for="certification">I certify that, I am perticipating in the token distribution event in the capacity of an individual (and benificial owner) and not as an agent (or representative of a third party corporate entity.</label>
+                    </div>
+                    <div class="input-item">
+                        <input class="input-checkbox" id="tokenKnow" type="checkbox">
+                        <label for="tokenKnow">I understand that, I can only in the token distribution event with the wallet address that was entered in the application form.</label>
+                    </div> --}}
+                    <div class="gaps-2x"></div>
+                    <div class="text-center"><button class="btn btn-primary" type="submit">Proceed with Coin Lock</button></div>
+                </form>
+                </div><!-- .modal-content -->
             </div><!-- .modal-content -->
         </div><!-- .modal-dialog -->
-    </div>
-    <!-- Modal End -->
+    </div><!-- Modal End -->
+ 
     
     <div class="footer-bar">
         <div class="container">
@@ -233,17 +231,23 @@
     <script>
         function myFunction(){
             document.getElementById("buyToken").style.display = "block"
-           
-            document.getElementById("buyToken").innerHTML = "BUY TOKEN"
-            document.getElementById("buytext").innerHTML = "Set amount of ELPS tokens you would like to purchase."
-            document.getElementById("buysubtext").innerHTML = "To become a part of the Eclipse Crypto project and purchase of ELPS token will only be possible after payment made and receving an approval. As you like to participate our project, please select payment method and enter the amount of ELPS tokens you wish to purchase."
+            document.getElementById("payinput").style.display = "none"
+            document.getElementById("payinput1").style.display = "block"
+            document.getElementById("buyToken").innerHTML = "LOCK NGN"
+            document.getElementById("buytext").innerHTML = "Set amount of NGN you would like to Lock."
+            document.getElementById("buysubtext").innerHTML = "You can lock any amount of NGN and earn interests up to 12% annually."
+            document.getElementById("buytextp").style.display = "none"
+            document.getElementById("buysubtextp").style.display = "none"
+
         }
         function myFunction1(){
-            document.getElementById("buyToken").style.display = "block"
-            document.getElementById("buyToken").innerHTML = "SELL TOKEN"
-            document.getElementById("buytext").innerHTML = "Set amount of ELPS tokens you would like to sell."
-            document.getElementById("buysubtext").innerHTML = "To become a part of the Eclipse Crypto project and sell ELPS token will only be possible after payment made and receving an approval. As you like to participate our project, please enter the amount of ELPS tokens you wish to sell."
-
+            document.getElementById("payinput").style.display = "block"
+            document.getElementById("payinput1").style.display = "none"
+            document.getElementById("buyToken").innerHTML = "LOCK ELPS"
+            document.getElementById("buytext").innerHTML = "Set amount of ELPS you would like to Lock."
+            document.getElementById("buysubtext").innerHTML = "You can lock any amount of ELPS and earn interests up to 12% annually."
+            document.getElementById("buytextp").style.display = "none"
+            document.getElementById("buysubtextp").style.display = "none"
         }
     </script>
 </body>
