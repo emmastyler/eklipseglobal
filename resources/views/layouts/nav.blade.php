@@ -30,17 +30,21 @@
                                 <ul>
                                     <li>1.240 BTC</li>
                                     <li>19.043 ETH</li>
-                                    <li>6,500.13 USD</li>
+                                    <li>{{ Auth::user()->balance }} NGN</li>
                                 </ul>
                             </div>
                             <ul class="user-dropdown-btns btn-grp guttar-10px">
-                               
-                                <li><a href="kyc.html" class="btn btn-xs btn-warning">KYC Pending</a></li>
+                               @if(Auth::user()->kyc_status == 'Pending')
+                               <li><a href="kyc" class="btn btn-xs btn-warning">KYC Pending</a></li>
+                               @else
+                               <li><a href="kyc" class="btn btn-xs btn-success">KYC Verified</a></li>
+                               @endif
+                                
                             </ul>
                             <div class="gaps-1x"></div>
                             <ul class="user-dropdown-links">
                                 <li><a href="{{url('profile')}}"><i class="ti ti-id-badge"></i>My Profile</a></li>
-                                <li><a href="{{url('security')}}"><i class="ti ti-lock"></i>Security</a></li>
+                                <li><a href="{{url('settings')}}"><i class="ti ti-lock"></i>Settings</a></li>
                                 <li><a href="{{url('notification')}}"><i class="ti ti-eye"></i>Notification</a></li>
                             </ul>
                             <ul class="user-dropdown-links">
@@ -98,12 +102,12 @@
                                     <ul>
                                         <li>1.240 BTC</li>
                                         <li>19.043 ETH</li>
-                                        <li>6,500.13 USD</li>
+                                        <li>{{ Auth::user()->balance }} NGN</li>
                                     </ul>
                                 </div>
                                 <ul class="user-dropdown-links">
                                     <li><a href="{{url('profile')}}"><i class="ti ti-id-badge"></i>My Profile</a></li>
-                                    <li><a href="{{url('security')}}"><i class="ti ti-lock"></i>Security</a></li>
+                                    <li><a href="{{url('settings')}}"><i class="ti ti-lock"></i>Settings</a></li>
                                     <li><a href="{{url('notification')}}"><i class="ti ti-eye"></i>Notification</a></li>                                </ul>
                                 <ul class="user-dropdown-links">
                                     <li>
@@ -139,7 +143,11 @@
                     <div class="user-uid">Email: <span>{{Auth::user()->email}}</span></div>
                     <ul class="btn-grp guttar-10px">
                         
-                        <li><a href="kyc.html" class="btn btn-xs btn-warning">KYC Pending</a></li>
+                        @if(Auth::user()->kyc_status == 'Pending')
+                               <li><a href="kyc" class="btn btn-xs btn-warning">KYC Pending</a></li>
+                               @else
+                               <li><a href="kyc" class="btn btn-xs btn-success">KYC Verified</a></li>
+                               @endif
                     </ul>
                 </div><!-- .user-box -->
                 <ul class="user-icon-nav">
@@ -147,8 +155,8 @@
                     <li><a href="{{url('kyc')}}"><em class="ti ti-files"></em>KYC Application</a></li>
                     <li><a href="{{url('deposit')}}"><em class="ti ti-user"></em>Deposit</a></li>
                     <li><a href="{{url('withdraw')}}"><em class="ti ti-user"></em>Withdraw</a></li>
-                    <li><a href="{{url('/transaction')}}"><em class="ti ti-pie-chart"></em>Buy/Sell Token</a></li>
-                    <li><a href="{{url('/transact')}}"><em class="ti ti-control-shuffle"></em>Transactions</a></li>
+                    <li><a href="{{url('/transact')}}"><em class="ti ti-pie-chart"></em>Buy/Sell Token</a></li>
+                    <li><a href="{{url('/transaction')}}"><em class="ti ti-control-shuffle"></em>Transactions</a></li>
                     <li><a href="{{url('/coinlock')}}"><em class="ti ti-control-shuffle"></em>Coinlock</a></li>
                     <li><a href="{{url('/member')}}"><em class="ti ti-control-shuffle"></em>Membership Plan</a></li>
                     <li><a href="{{url('/staking')}}"><em class="ti ti-control-shuffle"></em>Staking/Investment</a></li>

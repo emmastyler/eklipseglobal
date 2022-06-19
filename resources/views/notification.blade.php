@@ -24,6 +24,8 @@
                        
                         <div class="progress-card" style="background-color: #0F4F94; color:white; border-color:#0F4F94;">
                             <h3>Notifications Tab</h3>
+                            <h1>{{$auth}}</h1>
+       
                         </div>
                         <div class="gaps-3x"></div>
                         

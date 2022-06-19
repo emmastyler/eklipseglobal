@@ -23,7 +23,10 @@ class Kyc extends Model
         'address1',
         'address2',
         'zipcode',
-        'city'
+        'city',
+        'frontImage',
+        'backImage',
+        'status'
     ];
 
 }

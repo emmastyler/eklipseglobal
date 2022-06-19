@@ -49,15 +49,18 @@ require __DIR__.'/auth.php';
 
 Route::get('/kyc', [KycController::class, 'create'])->middleware(['auth', 'verified'])->name('kyc');
 Route::post('/kycinfo', [KycController::class, 'store'])->middleware(['auth', 'verified'])->name('kycinfo');
-Route::get('/transaction', [TransactionController::class, 'create'])->middleware(['auth', 'verified'])->name('transaction');
+Route::get('/transact', [TransactionController::class, 'index'])->middleware(['auth', 'verified'])->name('transaction');
 Route::get('/deposit', [DepositController::class, 'create'])->middleware(['auth', 'verified'])->name('deposit');
+Route::post('/depositmode', [DepositController::class, 'mode'])->middleware(['auth', 'verified'])->name('depositmode');
+Route::get('/depositverify/{reference}/{email}', [DepositController::class, 'store'])->middleware(['auth', 'verified'])->name('depositverify');
 Route::get('/withdraw', [WithdrawController::class, 'create'])->middleware(['auth', 'verified'])->name('withdraw');
-Route::resource('transact', TransactController::class)->middleware(['auth', 'verified']);
+Route::post('/withdrawverify', [WithdrawController::class, 'store'])->middleware(['auth', 'verified'])->name('withdrawverify');
+Route::resource('transaction', TransactController::class)->middleware(['auth', 'verified']);
 Route::resource('coinlock', CoinlockController::class)->middleware(['auth', 'verified']);
 Route::resource('member', MemberController::class)->middleware(['auth', 'verified']);
 Route::resource('staking', StakingController::class)->middleware(['auth', 'verified']);
 Route::resource('notification', NotificationController::class)->middleware(['auth', 'verified']);
 Route::resource('videocontensy', VideoController::class)->middleware(['auth', 'verified']);
-Route::resource('security', SecurityController::class)->middleware(['auth', 'verified']);
+Route::resource('settings', SecurityController::class)->middleware(['auth', 'verified']);
 Route::resource('profile', ProfileController::class)->middleware(['auth', 'verified']);
 

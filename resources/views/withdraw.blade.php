@@ -20,120 +20,192 @@
 <body class="user-dashboard">
     <!-- Topbar -->
     @include('layouts.nav')
+    
                 <div class="user-content">
                     <div class="user-kyc">
-                        <form action="{{route('kycinfo')}}" method="post">
-                            @csrf
+                       
                             <div class="from-step">
+                                @if($errors->any())
+                                <div style=" color:white; margin-left: 2.2rem; background-color:tomato; border:1px solid tomato; border-radius:2px; margin-top:5px;">
                                
+                                            <ul>
+                                                 @foreach($errors->all() as $error)
+                                                 <li>{{$error}}</li>
+                                                 @endforeach
+                                            </ul>
+                                           
+                                            
+                                        </div>
+                                        @endif
+                                    @if(session('success'))
+                                    <div style=" color:white; margin-left: 2.2rem; background-color:rgb(19, 114, 19); border:1px solid rgb(19, 114, 19); border-radius:2px; margin-top:5px;">
+                                        <p style=" color:white;">{{session('success')}}</p>
+                                       
+                                        
+                                    </div>
+                                        
+                                    
+                                    @endif
+                                    @if(session('error'))
+                                    <div style=" color:white; margin-left: 2.2rem; background-color:rgba(255, 99, 71, 0.417); border:1px solid rgba(255, 99, 71, 0.417); border-radius:2px; margin-top:5px;">
+                                        <p style=" color:white;">{{session('error')}}</p>
+                                       
+                                        
+                                    </div>
+                                        
+                                    
+                                    @endif
                                 <div class="from-step-item">
                                     <div class="from-step-heading">
-                                        <div class="from-step-number">$</div>
+                                        @if (Auth::user()->security_id !== null)
+                                            <div class="from-step-number">$</div>
                                         <div class="from-step-head">
                                             <h4>Choose your preferred withdrawal method</h4>
                                             
                                         </div>
-                                    </div>
-                                    <div class="from-step-content">       
-                                                    <div class="gaps-1x"></div>
-                                                    <div class="payment-list">
-                                                        <div class="row">
-                                                            <div class="col-md-3 col-sm-6">
-                                                                <div class="payment-item" onclick="myFunction()">
-                                                                    <input class="payment-check" type="radio" id="payeth" name="payOption" value="tranxETH" checked>
-                                                                    <label for="payeth">
-                                                                        <div class="payment-icon payment-icon-eth"><img src="images/icon-ethereum.png" alt="icon"></div>
-                                                                        <span class="payment-cur">Paystack</span>
-                                                                    </label>
-                                                                   
-                                                                </div>
-                                                            </div><!-- .col -->
-                                                            <div class="col-md-3 col-sm-6">
-                                                                <div class="payment-item" onclick="myFunction1()">
-                                                                    <input class="payment-check" type="radio" id="paylightcoin" name="payOption" value="tranxLTC">
-                                                                    <label for="paylightcoin">
-                                                                        <div class="payment-icon payment-icon-ltc"><img class="payment-icon" src="images/icon-lightcoin.png" alt="icon"></div>
-                                                                        <span class="payment-cur">Skrill</span>
-                                                                    </label>
-                                                                    
-                                                                </div>
-                                                            </div><!-- .col -->
-                                                            <div class="col-md-3 col-sm-6">
-                                                                <div class="payment-item" onclick="myFunction2()">
-                                                                    <input class="payment-check" type="radio" id="paybtc" name="payOption" value="tranxBTC">
-                                                                    <label for="paybtc">
-                                                                        <div class="payment-icon payment-icon-btc"><em class="payment-icon fab fa-btc"></em></div>
-                                                                        <span class="payment-cur">Bitcoin</span>
-                                                                    </label>
-                                                                   
-                                                                </div>
-                                                            </div><!-- .col -->
-                                                            <div class="col-md-3 col-sm-6">
-                                                                <div class="payment-item" onclick="myFunction3()">
-                                                                    <input class="payment-check" type="radio" id="payusd" name="payOption" value="tranxUSD">
-                                                                    <label for="payusd">
-                                                                        <div class="payment-icon payment-icon-usd"><em class="payment-icon fas fa-credit-card"></em></div>
-                                                                        <span class="payment-cur">Bank wire</span>
-                                                                    </label>
-                                                                    
-                                                                </div>
-                                                            </div><!-- .col -->
-                                                        </div><!-- .row -->
-                                                    </div><!-- .payment-list -->
-                                               
-                                        <div class="gaps-2x"></div>
+                                        @else
+                                        <div class="from-step-number">?</div>
+                                        <div class="from-step-head">
+                                            <h4>Please Set Security ID to enable withdrawal</h4>
+                                            
+                                        </div>
+                                        @endif
                                        
-                                        <div class="row">
-                                            
-                                            <div class="col-md-6">
+                                    </div> 
+                                    @if(Auth::user()->security_id !== null)
+                                        <div>
+                                            <div class="from-step-content">       
+                                                            <div class="gaps-1x"></div>
+                                                            <div class="payment-list">
+                                                                <div class="row">
+                                                                    
+                                                                    <div class="col-md-4 col-sm-6">
+                                                                        <div class="payment-item" onclick="myFunction1()">
+                                                                            <input class="payment-check" type="radio" id="paylightcoin" name="payOption" value="tranxLTC">
+                                                                            <label for="paylightcoin">
+                                                                                <div class="payment-icon payment-icon-ltc"><img class="payment-icon" src="images/icon-lightcoin.png" alt="icon"></div>
+                                                                                <span class="payment-cur">Skrill</span>
+                                                                            </label>
+                                                                            
+                                                                        </div>
+                                                                    </div><!-- .col -->
+                                                                    <div class="col-md-4 col-sm-6">
+                                                                        <div class="payment-item" onclick="myFunction2()">
+                                                                            <input class="payment-check" type="radio" id="paybtc" name="payOption" value="tranxBTC">
+                                                                            <label for="paybtc">
+                                                                                <div class="payment-icon payment-icon-btc"><em class="payment-icon fab fa-btc"></em></div>
+                                                                                <span class="payment-cur">Bitcoin</span>
+                                                                            </label>
+                                                                           
+                                                                        </div>
+                                                                    </div><!-- .col -->
+                                                                    <div class="col-md-4 col-sm-6">
+                                                                        <div class="payment-item" onclick="myFunction3()">
+                                                                            <input class="payment-check" type="radio" id="payusd" name="payOption" value="tranxUSD">
+                                                                            <label for="payusd">
+                                                                                <div class="payment-icon payment-icon-usd"><em class="payment-icon fas fa-credit-card"></em></div>
+                                                                                <span class="payment-cur">Bank wire</span>
+                                                                            </label>
+                                                                            
+                                                                        </div>
+                                                                    </div><!-- .col -->
+                                                                </div><!-- .row -->
+                                                            </div><!-- .payment-list -->
+                                                       
+                                                <div class="gaps-2x"></div>
+        
+                                                <div style="display: none;" id="showstack">
+                                                    <form id="paymentForm" action="{{route('withdrawverify')}}" method="post">
+                                                        @csrf  
+                                                        <div style=" color:white;background-color:rgba(255, 99, 71, 0.417); border:1px solid rgba(255, 99, 71, 0.417); border-radius:2px; margin-top:5px;">
+                                                            <h5 style=" color:white; padding-left:4px;">Withdrawal with Paystack is only for Nigeria residents.</h5>
+                                                        </div><br/>
+                                                        <div class="form-group input-item input-with-label">
+                                                          <label for="email" class="input-item-label">Email Address</label>
+                                                          <input type="email" name="email-address" class="input-bordered" value="{{Auth::user()->email}}" required readonly />
+                                                        </div>
+                                                        <div class="form-group input-item input-with-label">
+                                                          <label for="amount" class="input-item-label">Amount</label>
+                                                          <input type="tel" name="amount" class="input-bordered" required />
+                                                        </div>
+                                                        <div class="form-group input-item input-with-label">
+                                                          <label for="first-name" class="input-item-label">Full Name</label>
+                                                          <input type="text" name="fullname" class="input-bordered" value="{{Auth::user()->fullname}}" readonly/>
+                                                        </div>
+                                                        <div class="form-group input-item input-with-label">
+                                                            <label for="first-name" class="input-item-label">Account Number</label>
+                                                            <input type="text" name="account_number" class="input-bordered" value="{{Auth::user()->account_number}}" readonly/>
+                                                          </div>
+                                                          <div class="form-group input-item input-with-label">
+                                                            <label for="first-name" class="input-item-label">Bank_code</label>
+                                                            <input type="text" name="bank_code" class="input-bordered" value="{{Auth::user()->bank_code}}" readonly/>
+                                                          </div>
+                                                        <div class="form-submit">
+                                                          <button type="submit" class="btn btn-primary"> Withdraw with Paystack </button>
+                                                        </div>
+                                                      </form>
+                                                    </div>
+                                                    <form  action="{{route('withdrawverify')}}" method="post">
+                                                        @csrf
+                                                <div class="row">
+                                                    
+                                                    <div class="col-md-6">
+                                                        
+                                                        <div class="input-item input-with-label">
+                                                            <label for="token-address" class="input-item-label">Amount</label>
+                                                            <input class="input-bordered" type="text" id="token-address" name="amount_withdraw" value="">
+                                                            <span class="input-note"></span>
+                                                        </div><!-- .input-item -->
+        
+                                                        <div class="input-item input-with-label">
+                                                            <label for="token-address" class="input-item-label">Security ID</label>
+                                                            <input class="input-bordered" type="text" id="token-address" name="security_id" value="">
+                                                            <span class="input-note"></span>
+                                                        </div><!-- .input-item -->
+                                                        <!-- .input-item -->
+                                                    </div><!-- .col -->
+                                                    
+                                                </div><!-- .row -->
                                                 
-                                                <div class="input-item input-with-label">
-                                                    <label for="token-address" class="input-item-label">Amount in dollars</label>
-                                                    <input class="input-bordered" type="text" id="token-address" name="token-address" value="">
-                                                    <span class="input-note"></span>
+                                                <div class="input-item input-with-label" style="display: none;" id="showskrill">
+                                                    <label for="token-address" class="input-item-label">Skrill Email</label>
+                                                    <input class="input-bordered" type="text" id="token-address" name="skrill_email" value="">
+                                                    
                                                 </div><!-- .input-item -->
-
-                                                <div class="input-item input-with-label">
-                                                    <label for="token-address" class="input-item-label">Security ID</label>
-                                                    <input class="input-bordered" type="text" id="token-address" name="token-address" value="776908">
-                                                    <span class="input-note"></span>
+        
+                                                <div class="input-item input-with-label" style="display: none;" id="showstack">
+                                                    <label for="token-address" class="input-item-label">Paystack Email</label>
+                                                    <input class="input-bordered" type="text" id="token-address" name="token-address" value="4">
+                                                    
                                                 </div><!-- .input-item -->
-                                                <!-- .input-item -->
-                                            </div><!-- .col -->
-                                            
-                                        </div><!-- .row -->
-                                        
-                                        <div class="input-item input-with-label" style="display: none;" id="showskrill">
-                                            <label for="token-address" class="input-item-label">Skrill Email</label>
-                                            <input class="input-bordered" type="text" id="token-address" name="token-address" value="4">
-                                            
-                                        </div><!-- .input-item -->
+        
+                                                <div class="input-item input-with-label" style="display: none;" id="showbank">
+                                                    <label for="swalllet" class="input-item-label">Bank Details</label>
+                                                    <select class="input-bordered" name="bank_details" id="swalllet">
+                                                        <option value="NULL">select bank</option>
+                                                        <option value="{{Auth::user()->bank_name}}">{{Auth::user()->bank_name}} {{Auth::user()->account_number}} {{Auth::user()->fullname}}</option>
+                                                        <option value="{{Auth::user()->bank_name_1}}">{{Auth::user()->bank_name_1}} {{Auth::user()->account_number_1}} {{Auth::user()->account_name_1}}</option>
+                                                        <option value="{{Auth::user()->bank_name_2}}">{{Auth::user()->bank_name_2}} {{Auth::user()->account_number_2}} {{Auth::user()->account_name_2}}</option>
+                                                        <option value="{{Auth::user()->bank_name_3}}">{{Auth::user()->bank_name_3}} {{Auth::user()->account_number_3}} {{Auth::user()->account_name_3}}</option>
+                                                        <option value="{{Auth::user()->bank_name_4}}">{{Auth::user()->bank_name_4}} {{Auth::user()->account_number_4}} {{Auth::user()->account_name_4}}</option>
+                                                    </select>
+                                                </div><!-- .input-item -->
+        
+                                                <div class="input-item input-with-label" style="display: none;" id="showbitcoin">
+                                                    <label for="token-address" class="input-item-label">Bitcoin address</label>
+                                                    <input class="input-bordered" type="text" id="token-address" name="bitcoin_address" value="">
+                                                    
+                                                </div><!-- .input-item -->
+        
+                                                <div class="gaps-2x"></div><!-- 20px gap -->
+                                                <a class="btn btn-primary" href="#" data-bs-toggle="modal" data-bs-target="#kycConfirm">Submit Details</a>
+                                                <div class="gaps-2x"></div><!-- 20px gap -->
+                                            </div><!-- .from-step-content -->
+                                        </div>
+        
+                                    
+                                   @endif
 
-                                        <div class="input-item input-with-label" style="display: none;" id="showstack">
-                                            <label for="token-address" class="input-item-label">Paystack Email</label>
-                                            <input class="input-bordered" type="text" id="token-address" name="token-address" value="4">
-                                            
-                                        </div><!-- .input-item -->
-
-                                        <div class="input-item input-with-label" style="display: none;" id="showbank">
-                                            <label for="swalllet" class="input-item-label">Bank Details</label>
-                                            <select class="input-bordered" name="swalllet" id="swalllet">
-                                                <option value="eth">selcet bank</option>
-                                                <option value="dac"></option>
-                                                <option value="bic"></option>
-                                            </select>
-                                        </div><!-- .input-item -->
-
-                                        <div class="input-item input-with-label" style="display: none;" id="showbitcoin">
-                                            <label for="token-address" class="input-item-label">Bitcoin address</label>
-                                            <input class="input-bordered" type="text" id="token-address" name="token-address" value="client_btc">
-                                            
-                                        </div><!-- .input-item -->
-
-                                        <div class="gaps-2x"></div><!-- 20px gap -->
-                                        <a class="btn btn-primary" href="#" data-bs-toggle="modal" data-bs-target="#kycConfirm">Submit Details</a>
-                                        <div class="gaps-2x"></div><!-- 20px gap -->
-                                    </div><!-- .from-step-content -->
                                 </div><!-- .from-step-item -->
                             </div><!-- .from-step -->
                        
@@ -189,6 +261,7 @@
             </div><!-- .row -->
         </div><!-- .container -->
     </div>
+
     <!-- FooterBar End -->
     <!-- JavaScript (include all script here) -->
     <script src="assets/js/jquery.bundle1.js?ver=110"></script>

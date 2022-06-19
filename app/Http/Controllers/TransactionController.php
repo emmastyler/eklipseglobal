@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
-    public function create()
+    public function index()
     {
         return view('buy_sell');
     }

@@ -22,8 +22,36 @@
     @include('layouts.nav')
                 <div class="user-content">
                     <div class="user-kyc">
-                        <form action="{{route('kycinfo')}}" method="post">
-                            @csrf
+                        <div class="from-step">
+                            @if($errors->any())
+                            <div style=" color:white; margin-left: 2.2rem; background-color:tomato; border:1px solid tomato; border-radius:2px; margin-top:5px;">
+                           
+                                        <ul>
+                                             @foreach($errors->all() as $error)
+                                             <li>{{$error}}</li>
+                                             @endforeach
+                                        </ul>
+                                       
+                                        
+                                    </div>
+                                    @endif
+                                    @if(session('success'))
+                                    <div style=" color:white; margin-left: 2.2rem; background-color:rgb(19, 114, 19); border:1px solid rgb(19, 114, 19); border-radius:2px; margin-top:5px;">
+                                        <p style=" color:white;">{{session('success')}}</p>
+                                       
+                                        
+                                    </div>
+                                        
+                                    
+                                    @endif
+                            <div class="from-step-item">
+                                <div class="from-step-content">
+
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
                             <div class="from-step">
                                
                                 <div class="from-step-item">
@@ -31,7 +59,7 @@
                                         <div class="from-step-number">$</div>
                                         <div class="from-step-head">
                                             <h4>Choose your preferred deposit method</h4>
-                                            
+                                           
                                         </div>
                                     </div>
                                     <div class="from-step-content">       
@@ -40,7 +68,7 @@
                                                         <div class="row">
                                                             <div class="col-md-3 col-sm-6">
                                                                 <div class="payment-item" onclick="myFunction()">
-                                                                    <input class="payment-check" type="radio" id="payeth" name="payOption" value="tranxETH" checked>
+                                                                    <input class="payment-check" type="radio" id="payeth" name="payOption" value="tranxETH">
                                                                     <label for="payeth">
                                                                         <div class="payment-icon payment-icon-eth"><img src="images/icon-ethereum.png" alt="icon"></div>
                                                                         <span class="payment-cur">Paystack</span>
@@ -82,16 +110,38 @@
                                                     </div><!-- .payment-list -->
                                                
                                         <div class="gaps-2x"></div>
-                                       
+                                        <div style="display: none;" id="showstack">
+                                        <form id="paymentForm">                                            <div style=" color:white;background-color:rgba(255, 99, 71, 0.417); border:1px solid rgba(255, 99, 71, 0.417); border-radius:2px; margin-top:5px;">
+                                                <h5 style=" color:white; padding-left:4px;">Payment with Paystack is only for Nigeria residents.</h5>
+                                            </div><br/>
+                                            <div class="form-group input-item input-with-label">
+                                              <label for="email" class="input-item-label">Email Address</label>
+                                              <input type="email" id="email-address" class="input-bordered" required />
+                                            </div>
+                                            <div class="form-group input-item input-with-label">
+                                              <label for="amount" class="input-item-label">Amount</label>
+                                              <input type="tel" id="amount" class="input-bordered" required />
+                                            </div>
+                                            <div class="form-group input-item input-with-label">
+                                              <label for="first-name" class="input-item-label">First Name</label>
+                                              <input type="text" id="first-name" class="input-bordered" />
+                                            </div>
+                                            <div class="form-group input-item input-with-label">
+                                              <label for="last-name" class="input-item-label">Last Name</label>
+                                              <input type="text" id="last-name" class="input-bordered" />
+                                            </div>
+                                            <div class="form-submit">
+                                              <button type="submit" class="btn btn-primary" onclick="payWithPaystack(event)"> Pay with Paystack </button>
+                                            </div>
+                                          </form>
+                                        </div>
+                                        <form action="{{route('depositmode')}}" method="post">
+                                            @csrf
                                         <div class="row">
                                             
                                             <div class="col-md-6">
                                                 
-                                                <div class="input-item input-with-label">
-                                                    <label for="token-address" class="input-item-label">Amount in dollars</label>
-                                                    <input class="input-bordered" type="text" id="token-address" name="token-address" value="">
-                                                    <span class="input-note"></span>
-                                                </div><!-- .input-item -->
+                                                
 
                                                 
                                                 <!-- .input-item -->
@@ -100,17 +150,21 @@
                                         </div><!-- .row -->
                                         
                                         <div class="input-item input-with-label" style="display: none;" id="showskrill">
+                                            <label for="token-address" class="input-item-label">Amount in dollars</label>
+                                                    <input class="input-bordered" type="text" id="token-address" name="amountpaid_s" value="">
+                                                    <span class="input-note"></span>
+
                                             <label for="token-address" class="input-item-label">Skrill Email</label>
                                             <input class="input-bordered" type="text" id="token-address" name="token-address" value="company skrill email">
                                             
                                         </div><!-- .input-item -->
-
-                                        <div class="input-item input-with-label" style="display: none;" id="showstack">
-                                            <label for="token-address" class="input-item-label">Paystack Email</label>
-                                            <input class="input-bordered" type="text" id="token-address" name="token-address" value="company paystack email">
-                                            
-                                        </div><!-- .input-item -->
+                                        <input class="input-bordered" type="text" id="token-address" name="email" value=" {{ Auth::user()->email }}" hidden>
+                                       
                                         <div class="input-item input-with-label" style="display: none;" id="showbank">
+                                            <label for="token-address" class="input-item-label">Amount in dollars</label>
+                                                    <input class="input-bordered" type="text" id="token-address" name="amountpaid_bw" value="">
+                                                    <span class="input-note"></span>
+                                            
                                             <label for="token-address" class="input-item-label">Bank Details</label>
                                             <input class="input-bordered" type="text" id="token-address" name="token-address" value="Company bank details">
                                             
@@ -118,13 +172,17 @@
                                         
 
                                         <div class="input-item input-with-label" style="display: none;" id="showbitcoin">
+                                            <label for="token-address" class="input-item-label">Amount in dollars</label>
+                                                    <input class="input-bordered" type="text" id="token-address" name="amountpaid_b" value="">
+                                                    <span class="input-note"></span>
+                                            
                                             <label for="token-address" class="input-item-label">Bitcoin address</label>
                                             <input class="input-bordered" type="text" id="token-address" name="token-address" value="company_btc">
                                             
                                         </div><!-- .input-item -->
 
                                         <div class="gaps-2x"></div><!-- 20px gap -->
-                                        <a class="btn btn-primary" href="#" data-bs-toggle="modal" data-bs-target="#kycConfirm">Submit Details</a>
+                                        <a class="btn btn-primary" href="#" data-bs-toggle="modal" style="display: none;" id="realsub" data-bs-target="#kycConfirm">Submit Details</a>
                                         <div class="gaps-2x"></div><!-- 20px gap -->
                                     </div><!-- .from-step-content -->
                                 </div><!-- .from-step-item -->
@@ -161,7 +219,7 @@
                         <label for="tokenKnow">I understand that, I can only in the token distribution event with the wallet address that was entered in the application form.</label>
                     </div> --}}
                     <div class="gaps-2x"></div>
-                    <div class="text-center"><button class="btn btn-primary" type="submit">Proceed with withdraw</button></div>
+                    <div class="text-center"><button class="btn btn-primary" type="">I have made deposit</button></div>
                 </form>
                 </div><!-- .modal-content -->
             </div><!-- .modal-content -->
@@ -186,12 +244,16 @@
     <!-- JavaScript (include all script here) -->
     <script src="assets/js/jquery.bundle1.js?ver=110"></script>
     <script src="assets/js/script1.js?ver=110"></script>
+    <script src="https://js.paystack.co/v1/inline.js"></script> 
+
     <script>
         function myFunction (){
             document.getElementById("showstack").style.display = "block";
             document.getElementById("showskrill").style.display = "none";
             document.getElementById("showbitcoin").style.display = "none";
             document.getElementById("showbank").style.display = "none";
+            document.getElementById("realsub").style.display = "none";
+
 
         }
         function myFunction1 (){
@@ -199,6 +261,8 @@
             document.getElementById("showbitcoin").style.display = "none";
             document.getElementById("showbank").style.display = "none";
             document.getElementById("showstack").style.display = "none";
+            document.getElementById("realsub").style.display = "block";
+
 
         }
         function myFunction2 (){
@@ -206,6 +270,8 @@
             document.getElementById("showbank").style.display = "none";
             document.getElementById("showstack").style.display = "none";
             document.getElementById("showskrill").style.display = "none";
+            document.getElementById("realsub").style.display = "block";
+
 
         }
         function myFunction3 (){
@@ -213,9 +279,38 @@
             document.getElementById("showstack").style.display = "none";
             document.getElementById("showskrill").style.display = "none";
             document.getElementById("showbitcoin").style.display = "none";
+            document.getElementById("realsub").style.display = "block";
+
 
         }
     </script>
+    <script>
+        const paymentForm = document.getElementById('paymentForm');
+paymentForm.addEventListener("submit", payWithPaystack, false);
+function payWithPaystack(e) {
+  e.preventDefault();
+  let handler = PaystackPop.setup({
+    key: 'pk_test_90f51162f01f1572cd79b591d471ced283ddb9dd', // Replace with your public key
+    email: document.getElementById("email-address").value,
+    amount: document.getElementById("amount").value * 100,
+    ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+    // label: "Optional string that replaces customer email"
+    onClose: function(){
+      alert('Window closed.');
+    },
+    
+    callback: function(response){
+      let message = 'Payment complete! Reference: ' + response.reference;
+      alert(message);
+      
+  window.location.href = "depositverify/" + response.reference + "/" + document.getElementById("email-address").value;
+
+    }
+  });
+  handler.openIframe();
+}
+    </script>
+    
 </body>
 
 </html>

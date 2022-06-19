@@ -55,6 +55,7 @@
                                 <div class="field-wrap">
                                     
                                          <input type="text" class="input-bordered" id="bank_name" name="bank_name" style="display: none"></p>
+                                         <input type="text" class="input-bordered" id="bank_code" name="bank_code" style="display: none"></p>
                                 </div>
                                
                             </div>
@@ -114,6 +115,7 @@
 
                 document.getElementById('fullname').value = data.account_name;
                 document.getElementById('bank_name').value = data.Bank_name;
+                document.getElementById('bank_code').value = data.bank_code;
                 document.getElementById('fullnamep').innerHTML = data.account_name;
                 document.getElementById('divsoup').style.display = 'block';
                 document.getElementById('fullnamep').style.display = 'block';

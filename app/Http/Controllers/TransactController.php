@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Transactions;
+
 
 class TransactController extends Controller
 {
@@ -14,7 +16,8 @@ class TransactController extends Controller
     public function index()
     {
         //
-        return view('transactions');
+        $transactions = Transactions::orderBy('id', 'asc')->get();
+        return view('transactions')->with('transactions', $transactions);
     }
 
     /**

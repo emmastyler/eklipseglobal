@@ -24,7 +24,27 @@ class User extends Authenticatable implements MustVerifyEmail
         'bank_name',
         'account_number',
         'fullname',
-        'status'
+        'status',
+        'address',
+        'balance',
+        'bank_code',
+        'security_id',
+        'bitcoin_address',
+        'skrill_address',
+        'face_img',
+        'bank_name_1',
+        'account_number_1',
+        'account_name_1',
+        'bank_name_2',
+        'account_number_2',
+        'account_name_2',
+        'bank_name_3',
+        'account_number_3',
+        'account_name_3',
+        'bank_name_4',
+        'account_number_4',
+        'account_name_4',
+        'kyc_status'
     ];
 
     /**

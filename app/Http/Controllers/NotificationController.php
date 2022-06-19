@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\Http\Controllers\Auth;
+
 
 class NotificationController extends Controller
 {
@@ -14,7 +16,12 @@ class NotificationController extends Controller
     public function index()
     {
         //
-        return view('notification');
+        $data = array(
+            'title' => 'Services',
+            'services' => 10,
+        );
+        return view('notification')->with('auth', auth()->user());
+        //return view('notification');
     }
 
     /**

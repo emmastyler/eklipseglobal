@@ -48,7 +48,8 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
             'bank_name' => $request->bank_name,
             'account_number' => $request->account_number,
-            'fullname'=>$request->fullname
+            'fullname'=>$request->fullname,
+            'bank_code'=>$request->bank_code
             
         ]);
         
