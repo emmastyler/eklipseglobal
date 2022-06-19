@@ -25,16 +25,15 @@
                                 <span class="user-dropdown-email">{{ Auth::user()->email }}</span>
                             </div>
                             <div class="user-dropdown-balance">
-                                <h1>ICO TOKEN BALANCE</h1>
-                                <h3>120,000,000 IC0X</h3>
+                                <h1>ECLISPE TOKEN BALANCE</h1>
+                                <h3>120,000,000 ELPS</h3>
                                 <ul>
-                                    <li>1.240 BTC</li>
-                                    <li>19.043 ETH</li>
+                                    <li>0 USD</li>
                                     <li>{{ Auth::user()->balance }} NGN</li>
                                 </ul>
                             </div>
                             <ul class="user-dropdown-btns btn-grp guttar-10px">
-                               @if(Auth::user()->kyc_status == 'Pending')
+                               @if(Auth::user()->kyc_status == NULL)
                                <li><a href="kyc" class="btn btn-xs btn-warning">KYC Pending</a></li>
                                @else
                                <li><a href="kyc" class="btn btn-xs btn-success">KYC Verified</a></li>
@@ -97,13 +96,12 @@
                                     <span class="user-dropdown-email">{{ Auth::user()->email }}</span>
                                 </div>
                                 <div class="user-dropdown-balance"  >
-                                    <h6>ICO TOKEN BALANCE</h6>
-                                    <h3>120,000,000 IC0X</h3>
-                                    <ul>
-                                        <li>1.240 BTC</li>
-                                        <li>19.043 ETH</li>
-                                        <li>{{ Auth::user()->balance }} NGN</li>
-                                    </ul>
+                                    <h1>ECLISPE TOKEN BALANCE</h1>
+                                <h3>120,000,000 ELPS</h3>
+                                <ul>
+                                    <li>0 USD</li>
+                                    <li>{{ Auth::user()->balance }} NGN</li>
+                                </ul>
                                 </div>
                                 <ul class="user-dropdown-links">
                                     <li><a href="{{url('profile')}}"><i class="ti ti-id-badge"></i>My Profile</a></li>
@@ -143,7 +141,7 @@
                     <div class="user-uid">Email: <span>{{Auth::user()->email}}</span></div>
                     <ul class="btn-grp guttar-10px">
                         
-                        @if(Auth::user()->kyc_status == 'Pending')
+                        @if(Auth::user()->kyc_status == NULL)
                                <li><a href="kyc" class="btn btn-xs btn-warning">KYC Pending</a></li>
                                @else
                                <li><a href="kyc" class="btn btn-xs btn-success">KYC Verified</a></li>
