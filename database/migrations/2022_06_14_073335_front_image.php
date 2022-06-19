@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('Kycs', function (Blueprint $table) {
+        Schema::table('kycs', function (Blueprint $table) {
             //
             $table->string('frontImage')->nullable();
         });
