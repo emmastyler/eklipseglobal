@@ -25,7 +25,7 @@
                                 <span class="user-dropdown-email">{{ Auth::user()->email }}</span>
                             </div>
                             <div class="user-dropdown-balance">
-                                <h1>ECLISPE TOKEN BALANCE</h1>
+                                <h6>ECLISPE TOKEN BALANCE</h6>
                                 <h3>120,000,000 ELPS</h3>
                                 <ul>
                                     <li>0 USD</li>
@@ -96,12 +96,12 @@
                                     <span class="user-dropdown-email">{{ Auth::user()->email }}</span>
                                 </div>
                                 <div class="user-dropdown-balance"  >
-                                    <h1>ECLISPE TOKEN BALANCE</h1>
-                                <h3>120,000,000 ELPS</h3>
-                                <ul>
-                                    <li>0 USD</li>
-                                    <li>{{ Auth::user()->balance }} NGN</li>
-                                </ul>
+                                    <h6>ECLISPE TOKEN BALANCE</h6>
+                                    <h3>120,000,000 ELPS</h3>
+                                    <ul>
+                                        <li>0 USD</li>
+                                        <li>{{ Auth::user()->balance }} NGN</li>
+                                    </ul>
                                 </div>
                                 <ul class="user-dropdown-links">
                                     <li><a href="{{url('profile')}}"><i class="ti ti-id-badge"></i>My Profile</a></li>
