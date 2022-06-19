@@ -23,11 +23,14 @@
                     <div class="user-panel">
                        
                         <div class="progress-card" style="background-color: #0F4F94; color:white; border-color:#0F4F94;">
-                            <h3>TRANSACTION HISTORY</h3>
+                            <h3>TRANSACTION HISTORY </h3>
+                            @if(count($transactions)<= 0)
+                               <p style="color: white">No transaction at the moment! Please make a deposit or withdrawal first.</p>
+                            @endif
                         </div>
                         <div class="gaps-3x"></div>
                         <div class="table-responsive">
-                            @if(count($transactions)>0)
+                            @if($transactions)
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -36,6 +39,7 @@
                                         <th>Status</th>
                                     </tr>
                                 </thead>
+                                
                                 <tbody>
                                     @foreach($transactions as $transaction)
                                     <tr>

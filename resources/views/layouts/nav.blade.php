@@ -33,7 +33,7 @@
                                 </ul>
                             </div>
                             <ul class="user-dropdown-btns btn-grp guttar-10px">
-                               @if(Auth::user()->kyc_status == NULL)
+                               @if(Auth::user()->kyc_status == NULL || Auth::user()->kyc_status == 'Pending')
                                <li><a href="kyc" class="btn btn-xs btn-warning">KYC Pending</a></li>
                                @else
                                <li><a href="kyc" class="btn btn-xs btn-success">KYC Verified</a></li>
@@ -141,7 +141,7 @@
                     <div class="user-uid">Email: <span>{{Auth::user()->email}}</span></div>
                     <ul class="btn-grp guttar-10px">
                         
-                        @if(Auth::user()->kyc_status == NULL)
+                        @if(Auth::user()->kyc_status == NULL || Auth::user()->kyc_status == 'Pending' )
                                <li><a href="kyc" class="btn btn-xs btn-warning">KYC Pending</a></li>
                                @else
                                <li><a href="kyc" class="btn btn-xs btn-success">KYC Verified</a></li>

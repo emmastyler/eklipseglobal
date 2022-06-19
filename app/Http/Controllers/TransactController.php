@@ -16,8 +16,11 @@ class TransactController extends Controller
     public function index()
     {
         //
-        $transactions = Transactions::orderBy('id', 'asc')->get();
+       
+        $transactions =  Transactions::where('email', '=', auth()->user()->email)->get();
         return view('transactions')->with('transactions', $transactions);
+        //return gettype($transactions);
+        //return ($transactions);
     }
 
     /**
