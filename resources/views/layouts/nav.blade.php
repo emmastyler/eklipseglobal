@@ -26,9 +26,9 @@
                             </div>
                             <div class="user-dropdown-balance">
                                 <h6>ECLISPE TOKEN BALANCE</h6>
-                                <h3>120,000,000 ELPS</h3>
+                                <h3>{{ Auth::user()->elp == NULL ? 0 :  Auth::user()->elp }} elp</h3>
                                 <ul>
-                                    <li>0 USD</li>
+                                    <li>{{ Auth::user()->usd == NULL ? 0 :  Auth::user()->usd }} USD</li>
                                     <li>{{ Auth::user()->balance }} NGN</li>
                                 </ul>
                             </div>
@@ -97,9 +97,9 @@
                                 </div>
                                 <div class="user-dropdown-balance"  >
                                     <h6>ECLISPE TOKEN BALANCE</h6>
-                                    <h3>120,000,000 ELPS</h3>
+                                    <h3>{{ Auth::user()->elp == NULL ? 0 :  Auth::user()->elp }} ELPS</h3>
                                     <ul>
-                                        <li>0 USD</li>
+                                        <li>{{ Auth::user()->usd == NULL ? 0 :  Auth::user()->usd }} USD</li>
                                         <li>{{ Auth::user()->balance }} NGN</li>
                                     </ul>
                                 </div>
@@ -153,10 +153,22 @@
                     <li><a href="{{url('kyc')}}"><em class="ti ti-files"></em>KYC Application</a></li>
                     <li><a href="{{url('deposit')}}"><em class="ti ti-user"></em>Deposit</a></li>
                     <li><a href="{{url('withdraw')}}"><em class="ti ti-user"></em>Withdraw</a></li>
-                    <li><a href="{{url('/transact')}}"><em class="ti ti-pie-chart"></em>Buy/Sell Token</a></li>
+                    @if (Auth::user()->status == 'Miner' || Auth::user()->status == 'Trader')
+                     <li><a href="{{url('/transact')}}"><em class="ti ti-pie-chart"></em>@if (Auth::user()->status == 'Miner')
+                        Sell Token
+                        @else
+                        Buy/Sell Token
+                        @endif </a></li>
+                    @endif
+                   
                     <li><a href="{{url('/transaction')}}"><em class="ti ti-control-shuffle"></em>Transactions</a></li>
                     <li><a href="{{url('/coinlock')}}"><em class="ti ti-control-shuffle"></em>Coinlock</a></li>
+                    @if (Auth::user()->mem_stats == NULL)
                     <li><a href="{{url('/member')}}"><em class="ti ti-control-shuffle"></em>Membership Plan</a></li>
+                    @endif
+                    @if (Auth::user()->status == 'Miner')
+                    <li><a href="{{url('/mine')}}"><em class="ti ti-control-shuffle"></em>Mine Pool</a></li>
+                    @endif
                     <li><a href="{{url('/staking')}}"><em class="ti ti-control-shuffle"></em>Staking/Investment</a></li>
                     <li><a href="{{url('/videocontensy')}}"><em class="ti ti-control-shuffle"></em>Video Contensy</a></li>
                   

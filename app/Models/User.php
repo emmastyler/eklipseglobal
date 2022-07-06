@@ -44,7 +44,14 @@ class User extends Authenticatable implements MustVerifyEmail
         'bank_name_4',
         'account_number_4',
         'account_name_4',
-        'kyc_status'
+        'kyc_status',
+        'elp',
+        'usd',
+        'amount_lock',
+        'amount_lock_elps',
+        'time_left_lock',
+        'ref',
+        'mem_stats'
     ];
 
     /**

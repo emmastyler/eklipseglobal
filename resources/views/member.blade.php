@@ -22,11 +22,256 @@
     @include('layouts.nav')
                 <div class="user-content">
                     <div class="user-kyc">
-                        <form action="{{route('kycinfo')}}" method="post">
+                        @if(Auth::user()->status == 'Trader')
+                        <form action="{{route('miner')}}" method="post">
                             @csrf
+
+                           
+
+                        <div class="from-step-item">
+                          <div class="from-step-heading" style="background-color: #0F4F94; color:white; border-color:#0F4F94;">
+                              <div class="from-step-number">+</div>
+                              <div class="from-step-head" >
+                                  <h4>{{Auth::user()->status}} Plan Choosen</h4>
+                                  
+                              </div>
+                          </div>
+                         
+                        </div> 
+                      </form>
+                      @endif
+
+                        @if(Auth::user()->status == 'Miner')
+                        <form action="{{route('miner')}}" method="post">
+                            @csrf
+
+                           
+
+                        <div class="from-step-item">
+                          <div class="from-step-heading" style="background-color: #0F4F94; color:white; border-color:#0F4F94;">
+                              <div class="from-step-number">+</div>
+                              <div class="from-step-head" >
+                                  <h4>{{Auth::user()->status}} Plan Choosen</h4>
+                                  <h5>Packages to purchase</h5>
+                              </div>
+                          </div>
+                          <div class="from-step-content" >
+                           
+                            <div class="gaps-1x"></div>
+                                              <div class="payment-list">
+                                                @if(session('error_bal'))
+                                                <div style=" color:white;padding-left:5px; background-color:tomato; border:1px solid tomato; border-radius:2px; margin-top:5px;">
+                                                    <b><p style=" color:white;">{{session('error_bal')}}</p></b>
+                                                   
+                                                    
+                                                </div>
+                                                <div class="gaps-3x"></div>
+                                                
+                                                @endif
+                                                
+                                                  <div class="row">
+                                                      
+                                                      <div class="col-md-4 col-sm-6">
+                                                          <div class="payment-item" onclick="myFunction()">
+                                                              <input class="payment-check" type="radio" id="payeth" name="mineOption" value="10">
+                                                              
+                                                              <label for="payeth">
+                                                                  <span class="payment-cur"><b>5Mp at $10(5000 NGN)</a></b></span>
+                                                              </label>
+                                                             
+                                                          </div>
+                                                      </div><!-- .col -->
+                                                      <div class="col-md-4 col-sm-6">
+                                                          <div class="payment-item" onclick="myFunction1()">
+                                                              <input class="payment-check" type="radio" id="paylightcoin" name="mineOption" value="50">
+                                                              <label for="paylightcoin">
+                                                                  
+                                                                  <span class="payment-cur"><b>50Mp at $50(25000 NGN)</b></span>
+                                                              </label>
+                                                              
+                                                          </div>
+                                                      </div><!-- .col -->
+                                                      <div class="col-md-4 col-sm-6">
+                                                          
+                                                          <div class="payment-item" onclick="myFunction2()">
+                                                              <input class="payment-check" type="radio" id="paybtc" name="mineOption" value="100">
+                                                              <label for="paybtc">
+                                                                  <span class="payment-cur"><b>100Mp at $100(50000 NGN)</b></span>
+                                                              </label>
+                                                             
+                                                          </div>
+                                                      </div><!-- .col -->
+
+                                                      <div class="col-md-4 col-sm-6">
+                                                          
+                                                          <div class="payment-item" onclick="myFunction2()">
+                                                              <input class="payment-check" type="radio" id="payusd" name="mineOption" value="200">
+                                                              <label for="payusd">
+                                                                  <span class="payment-cur"><b>200Mp at $200(100000 NGN)
+                                                                      </b></span><br/>
+                                                                  <div></div>
+                                                              </label>
+                                                             
+
+                                                          </div>
+                                                         
+                                                      </div><!-- .col -->
+                                                      {{-- <div class="col-md-3 col-sm-6">
+                                                          <div class="payment-item" onclick="myFunction3()">
+                                                              <input class="payment-check" type="radio" id="payusd" name="payOption" value="tranxUSD">
+                                                              <label for="payusd">
+                                                                  <div class="payment-icon payment-icon-usd"><em class="payment-icon fas fa-credit-card"></em></div>
+                                                                  <span class="payment-cur">Bank wire</span>
+                                                              </label>
+                                                              
+                                                          </div>
+                                                      </div><!-- .col --> --}}
+                                                  </div><!-- .row -->
+                                              </div><!-- .payment-list -->
+                                         
+                                  <div class="gaps-2x"></div>
+                                 
+                                  <div class="row">
+                                      
+                                      <div class="col-md-6">
+                                          
+                                          {{-- <div class="input-item input-with-label">
+                                              <label for="token-address" class="input-item-label">Amount in dollars</label>
+                                              <input class="input-bordered" type="text" id="token-address" name="token-address" value="">
+                                              <span class="input-note"></span>
+                                          </div><!-- .input-item --> --}}
+
+                                          
+                                          <!-- .input-item -->
+                                      </div><!-- .col -->
+                                      
+                                  </div><!-- .row -->
+                                  
+
+                                  <div class="gaps-2x"></div><!-- 20px gap -->
+                                  <button class="btn btn-primary" type="submit">Purchase</button><br/><br/>
+                                  <p class=" btn-success" style="display: none; padding: 10px;" id="showref">http://eclipse.test/register?ref={{Auth::user()->name}}</p>
+                             
+                                  <div class="gaps-2x"></div><!-- 20px gap -->
+                          </div>
+                        </div> 
+                      </form>
+                      @endif
+
+                    @if(Auth::user()->status == 'Affiliate')
+                        <form method="post">
+                            @csrf
+                           
                             <div class="from-step">
-                               
-                                <div class="from-step-item">
+
+                                {{-- Affiliate--}}
+
+                             
+                              <div class="from-step-item">
+                                <div class="from-step-heading" style="background-color: #0F4F94; color:white; border-color:#0F4F94;">
+                                    <div class="from-step-number">+</div>
+                                    <div class="from-step-head" >
+                                        <h4>{{Auth::user()->status}} Plan Choosen</h4>
+                                        <h5>Check out our list of packages to promote</h5>
+                                    </div>
+                                </div>
+                                <div class="from-step-content" >
+                                 
+                                  <div class="gaps-1x"></div>
+                                                    <div class="payment-list">
+                                                        <div class="row">
+                                                            <div class="col-md-4 col-sm-6">
+                                                                <div class="payment-item" onclick="myFunction()">
+                                                                    <input class="payment-check" type="radio" id="payeth" name="payOption" value="tranxETH">
+                                                                    
+                                                                    <label for="payeth">
+                                                                        <span class="payment-cur"><b>5Mp at $10(5000 NGN)<p>Get 50% commission</p></a></b></span>
+                                                                    </label>
+                                                                   
+                                                                </div>
+                                                            </div><!-- .col -->
+                                                            <div class="col-md-4 col-sm-6">
+                                                                <div class="payment-item" onclick="myFunction1()">
+                                                                    <input class="payment-check" type="radio" id="paylightcoin" name="payOption" value="tranxLTC">
+                                                                    <label for="paylightcoin">
+                                                                        
+                                                                        <span class="payment-cur"><b>50Mp at $50(25000 NGN)<p>Get 25% commission</p></b></span>
+                                                                    </label>
+                                                                    
+                                                                </div>
+                                                            </div><!-- .col -->
+                                                            <div class="col-md-4 col-sm-6">
+                                                                
+                                                                <div class="payment-item" onclick="myFunction2()">
+                                                                    <input class="payment-check" type="radio" id="paybtc" name="payOption" value="tranxBTC">
+                                                                    <label for="paybtc">
+                                                                        <span class="payment-cur"><b>100Mp at $50(50000 NGN)<p>Get 25% commission</p></b></span>
+                                                                    </label>
+                                                                   
+                                                                </div>
+                                                            </div><!-- .col -->
+
+                                                            <div class="col-md-4 col-sm-6">
+                                                                
+                                                                <div class="payment-item" onclick="myFunction2()">
+                                                                    <input class="payment-check" type="radio" id="payusd" name="payOption" value="tranxUSD">
+                                                                    <label for="payusd">
+                                                                        <span class="payment-cur"><b>200Mp at $200(100000 NGN)
+                                                                            <p>Get 25% commission</p></b></span><br/>
+                                                                        <div></div>
+                                                                    </label>
+                                                                   
+
+                                                                </div>
+                                                               
+                                                            </div><!-- .col -->
+                                                            {{-- <div class="col-md-3 col-sm-6">
+                                                                <div class="payment-item" onclick="myFunction3()">
+                                                                    <input class="payment-check" type="radio" id="payusd" name="payOption" value="tranxUSD">
+                                                                    <label for="payusd">
+                                                                        <div class="payment-icon payment-icon-usd"><em class="payment-icon fas fa-credit-card"></em></div>
+                                                                        <span class="payment-cur">Bank wire</span>
+                                                                    </label>
+                                                                    
+                                                                </div>
+                                                            </div><!-- .col --> --}}
+                                                        </div><!-- .row -->
+                                                    </div><!-- .payment-list -->
+                                               
+                                        <div class="gaps-2x"></div>
+                                       
+                                        <div class="row">
+                                            
+                                            <div class="col-md-6">
+                                                
+                                                {{-- <div class="input-item input-with-label">
+                                                    <label for="token-address" class="input-item-label">Amount in dollars</label>
+                                                    <input class="input-bordered" type="text" id="token-address" name="token-address" value="">
+                                                    <span class="input-note"></span>
+                                                </div><!-- .input-item --> --}}
+
+                                                
+                                                <!-- .input-item -->
+                                            </div><!-- .col -->
+                                            
+                                        </div><!-- .row -->
+                                        
+
+                                        <div class="gaps-2x"></div><!-- 20px gap -->
+                                        <a class="btn btn-primary" href="" onclick="showRef(event)">Promote</a><br/><br/>
+                                        <p class=" btn-success" style="display: none; padding: 10px;" id="showref">http://eclipse.test/register?ref={{Auth::user()->name}}</p>
+                                        <div class="gaps-2x"></div><!-- 20px gap -->
+                                </div>
+                              </div>
+                            </form>
+                              {{-- miner--}}
+                             @endif
+
+                            
+                             @if(Auth::user()->status == NULL)
+                             <form action="{{route('member.store')}}" method="post">
+                                @csrf
+                             <div class="from-step-item">
                                     <div class="from-step-heading">
                                         <div class="from-step-number">+</div>
                                         <div class="from-step-head">
@@ -104,11 +349,16 @@
 
                                         <div class="gaps-2x"></div><!-- 20px gap -->
                                         <a class="btn btn-primary" href="#" data-bs-toggle="modal" data-bs-target="#kycConfirm">Choose this</a>
-                                        <div class="gaps-2x"></div><!-- 20px gap -->
+                                          <div class="gaps-2x"></div><!-- 20px gap -->
+                                       
                                     </div><!-- .from-step-content -->
                                 </div><!-- .from-step-item -->
+                              @endif
+                               
                             </div><!-- .from-step -->
-                       
+                            
+                            
+                            
                     </div><!-- .user-kyc -->
                 </div><!-- .user-content -->
             </div><!-- .d-flex -->
@@ -124,7 +374,7 @@
                     <div class="input-item">
                         {{-- <input class="input-checkbox" id="term-condition" type=""> --}}
                         
-                        <center><label for="term-condition">You can't subscribe to any other plan.</center></label>
+                        <center><label for="term-condition">You can't subscribe to any other plan after this action.</center></label>
                     </div>
                     
                    {{--  <div class="input-item">
@@ -142,10 +392,12 @@
                     <div class="gaps-2x"></div>
                     <div class="text-center"><button class="btn btn-primary" type="submit">Proceed</button></div>
                 </form>
+
                 </div><!-- .modal-content -->
             </div><!-- .modal-content -->
         </div><!-- .modal-dialog -->
     </div><!-- Modal End -->
+  
     <div class="footer-bar">
         <div class="container">
             <div class="row">
@@ -199,6 +451,10 @@
             document.getElementById("showskrill").style.display = "none";
             document.getElementById("showbitcoin").style.display = "none";
 
+        }
+        function showRef(event) {
+            event.preventDefault();
+            document.getElementById("showref").style.display = "block";
         }
     </script>
 </body>

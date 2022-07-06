@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\video;
+
 
 class VideoController extends Controller
 {
@@ -37,6 +40,32 @@ class VideoController extends Controller
     public function store(Request $request)
     {
         //
+         $video = video::where('email', '=', auth()->user()->email)->first();
+        if($video){
+            $video->status = 'Pending';
+            $video->type_f = $request->type_f;
+            $video->type_w = $request->type_w;
+            $video->type_y = $request->type_y;
+            $video->email = auth()->user()->email;
+            $video->save();
+            return redirect('videocontensy')->with('success', ' Links uploaded successfully');
+
+        } 
+        else{
+           
+            video::create([
+            'status'=> 'Pending',
+            'type_f'=> $request->type_f,
+            'type_w'=> $request->type_w,
+            'type_y'=> $request->type_y,
+            'email'=> auth()->user()->email,
+        
+            ]);
+
+            return redirect('videocontensy')->with('success', ' Links uploaded successfully');
+}
+            
+
     }
 
     /**

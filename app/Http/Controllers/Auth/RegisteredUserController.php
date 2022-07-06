@@ -20,8 +20,9 @@ class RegisteredUserController extends Controller
      * @return \Illuminate\View\View
      */
     public function create()
-    {
-        return view('auth.register');
+    {   $ref =  request()->query('ref');
+        //return gettype($ref);
+        return view('auth.register')->with('ref', $ref);
     }
 
     /**
@@ -40,25 +41,59 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-      
-
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'bank_name' => $request->bank_name,
-            'account_number' => $request->account_number,
-            'fullname'=>$request->fullname,
-            'bank_code'=>$request->bank_code
-            
-        ]);
         
-
-        event(new Registered($user));
-
-        Auth::login($user);
-
-        //return redirect()->action([AuthenticatedSessionController::class, 'create']);
-        return redirect(RouteServiceProvider::HOME);
+        if($request->ref != NULL){
+            $member = User::where('name', '=', $request->ref)->first(); 
+            if($member){
+                $user = User::create([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password),
+                    'bank_name' => $request->bank_name ? $request->bank_name : NULL ,
+                    'account_number' => $request->account_number ? $request->account_number : NULL,
+                    'fullname'=>$request->fullname ? $request->fullname : $request->othername,
+                    'bank_code'=>$request->bank_code ? $request->bank_code : NULL,
+                    'ref'=> $request->ref,
+                    'status'=>$request->ref ? 'Miner' : NULL,
+                    'address'=>Hash::make($request->email),
+                    
+                ]);
+                
+        
+                event(new Registered($user));
+        
+                Auth::login($user);
+        
+                //return redirect()->action([AuthenticatedSessionController::class, 'create']);
+                return redirect(RouteServiceProvider::HOME);
+            }
+            else {
+                return redirect('register')->with('error', 'Invalid Referral details');
+            }
+           
+        }
+        else {
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'bank_name' => $request->bank_name ? $request->bank_name : NULL ,
+                'account_number' => $request->account_number ? $request->account_number : NULL,
+                'fullname'=>$request->fullname ? $request->fullname : $request->othername,
+                'bank_code'=>$request->bank_code ? $request->bank_code : NULL,
+                'ref'=> $request->ref,
+                'status'=>$request->ref ? 'Miner' : NULL,
+                'address'=>Hash::make($request->email),
+            ]);
+            
+    
+            event(new Registered($user));
+    
+            Auth::login($user);
+    
+            //return redirect()->action([AuthenticatedSessionController::class, 'create']);
+            return redirect(RouteServiceProvider::HOME);
+        }
+       
     }
 }

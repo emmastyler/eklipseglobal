@@ -24,16 +24,50 @@
                             
                             <div class="user-content">
                                 <div class="user-panel">
-                                    <h2 class="user-panel-title">Buy and Sell Eclipse Tokens</h2>
-                                    <form action="{{route('kycinfo')}}" method="post"> 
+                                    <h2 class="user-panel-title">
+                                        @if (Auth::user()->status == 'Miner')
+                                        Sell Eclipse Tokens
+
+                                        @else 
+                                         Buy and Sell Eclipse Tokens
+                                        @endif
+                                       </h2>
+                                       @if(session('error_bal'))
+                                       <div style=" color:white;padding-left:5px; background-color:tomato; border:1px solid tomato; border-radius:2px; margin-top:5px;">
+                                           <b><p style=" color:white;">{{session('error_bal')}}</p></b>
+                                          
+                                           
+                                       </div>
+                                       @endif
+                                       @if(session('success'))
+                                       <div style=" color:white;padding-left:5px; background-color:rgb(19, 114, 19); border:1px solid rgb(19, 114, 19); border-radius:2px; margin-top:5px;">
+                                           <b><p style=" color:white;">{{session('success')}}</p></b>
+                                          
+                                           
+                                       </div>
+                                       @endif
+                                    <form action="{{route('buy_sell')}}" method="post"> 
                                          @csrf                                      
                                          <h5 class="user-panel-subtitle"></h5>
                                         <div class="gaps-1x"></div>
                                         <div class="payment-list">
-                                            <div class="row">
+                                            <div class="row"> 
+                                                @if (Auth::user()->status == 'Miner')
+                                                <div class="col-md-12 col-sm-12" >
+                                                    <div class="payment-item" onclick="myFunction1()">
+                                                        <input class="payment-check" type="radio" id="paylightcoin" name="payOption" value="tranxLTC">
+                                                        <label for="paylightcoin" style="background-color: #ee0b0b; border-color:#ee0b0b;">
+                                                            <div class="payment-icon payment-icon-ltc"><img class="payment-icon" src="images/icon-lightcoin.png" alt="icon"></div>
+                                                            <span class="payment-cur" style="color: white"><b>Sell</b></span>
+                                                        </label>
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                                @else 
                                                 <div class="col-md-6 col-sm-6" >
+                                                   
                                                     <div class="payment-item" onclick="myFunction()">
-                                                        <input class="payment-check" type="radio" id="payeth" name="payOption" value="tranxETH" checked>
+                                                        <input class="payment-check" type="radio" id="payeth" name="payOption" value="tranxETH">
                                                         <label for="payeth" style="background-color: rgb(20, 138, 20);  border-color:rgb(20, 138, 20);">
                                                             <div class="payment-icon payment-icon-eth" ><img src="images/icon-ethereum.png" alt="icon"></div>
                                                             <span class="payment-cur" style="color: white"><b>Buy</b></span>
@@ -51,6 +85,8 @@
                                                         <span></span>
                                                     </div>
                                                 </div><!-- .col -->
+                                                @endif
+                                                
                                                 
                                             </div><!-- .row -->
                                         </div><!-- .payment-list -->
@@ -62,18 +98,25 @@
                                             <div class="col-md-8">
                                                 <div class="payment-calculator">
                                                     <div class="payment-get">
-                                                        <label for="paymentGet">Amount of Tokens</label>
+                                                        <label for="paymentGet">Amount of Tokens (ELPS)</label>
                                                         <div class="payment-input">
-                                                            <input class="input-bordered" type="text" id="paymentGet" value="1200">
-                                                            <span class="payment-get-cur payment-cal-cur">ELPS</span>
+                                                            <input class="input-bordered" type="number" id="paymentGet" name="elps" value="" onchange="process()">
+                                                            {{-- <span class="payment-get-cur payment-cal-cur">ELPS</span> --}}
                                                         </div>
+                                                       <div class="gaps-2x"></div>
+                                                       <center><span class="btn btn-primary payment-btn">covert</span></center>
                                                     </div>
-                                                    <em class="ti ti-exchange-vertical"></em>
+                                                    <div style="margin-bottom: -200px">
+                                                        
+                                                    </div>
+                                                    
+                                                    {{-- <em class="ti ti-exchange-vertical">convert</em> --}}
                                                     <div class="payment-from">
-                                                        <label for="paymentFrom">Payment Amount</label>
+                                                        
+                                                        <label for="paymentFrom">Payment Amount (USD)</label>
                                                         <div class="payment-input">
-                                                            <input class="input-bordered" type="text" id="paymentFrom" value="600">
-                                                            <span class="payment-from-cur payment-cal-cur">usd</span>
+                                                            <input class="input-bordered" type="number" id="paymentFrom" name="usd" value="" onchange="pro()">
+                                                            {{-- <span class="payment-from-cur payment-cal-cur">usd</span> --}}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -91,18 +134,18 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="payment-summary-item payment-summary-final">
-                                                        <h6 class="payment-summary-title">Final Payment</h6>
+                                                        <h6 class="payment-summary-title" >Final Payment</h6>
                                                         <div class="payment-summary-info">
-                                                            <span class="payment-summary-amount">600.00</span> <span>usd</span>
+                                                            <span class="payment-summary-amount" id="usds">0</span> <span>usd</span>
                                                         </div>
                                                     </div>
                                                 </div><!-- .col -->
                                                
                                                 <div class="col-md-6">
                                                     <div class="payment-summary-item payment-summary-tokens">
-                                                        <h6 class="payment-summary-title">Tokens Received</h6>
+                                                        <h6 class="payment-summary-title" >Tokens Received</h6>
                                                         <div class="payment-summary-info">
-                                                            <span class="payment-summary-amount">1200</span> <span>ELPS</span>
+                                                            <span class="payment-summary-amount" id="tokens">0</span> <span>ELPS</span>
                                                         </div>
                                                     </div>
                                                 </div><!-- .col -->
@@ -123,13 +166,13 @@
                 <div class="tranx-popup">
                     <h5>Transaction Details</h5>
                     <div class="tranx-payment-details">
-                        <p>Hi, Your transaction <strong>(BUY)</strong> is <strong>Pending Payment</strong><br> You will receive <strong>5,470 ELPS</strong> tokens once paid.</p>
+                        <p>Hi, Your transaction <strong>(BUY)</strong> is <strong>Pending Payment</strong><br> You will receive <strong id="tok"></strong> tokens once paid.</p>
                         <h6>Please make your Payment to the Account below</h6>
                         <div class="tranx-payment-info">
                             <span class="tranx-copy-feedback copy-feedback"></span>
                             <em class="fab fa-ethereum"></em>
-                            <input type="text" class="tranx-payment-address" value="SECURITY ID" disabled>
-                            <button class="tranx-payment-copy copy-clipboard-modal" data-clipboard-text="0x4156d3342d5c385a87d264f90653733592000581"><em class="ti ti-files"></em></button>
+                            <input type="text" class="tranx-payment-address" value="{{$admin->address}}" disabled>
+                            <a class="tranx-payment-copy copy-clipboard-modal" data-clipboard-text="{{$admin->address}}"><em class="ti ti-files"></em></a>
                         </div><!-- .tranx-payment-info -->
                         <!-- @updated on v1.0.1 -->
                         <ul class="tranx-info-list">
@@ -170,13 +213,13 @@
                 <div class="tranx-popup">
                     <h5>Transaction Details</h5>
                     <div class="tranx-payment-details">
-                        <p>Hi, Your transaction <strong>(SELL)</strong> is <strong>Pending</strong><br> A total of <strong>5,470 ELPS</strong> tokens will be deducted from your account.</p>
+                        <p>Hi, Your transaction <strong>(SELL)</strong> is <strong>Pending</strong><br> A total of <strong id="toks"></strong> tokens will be deducted from your account.</p>
                         <h6>Please make your Payment to the bellow Address</h6>
                         <div class="tranx-payment-info">
                             <span class="tranx-copy-feedback copy-feedback"></span>
                             <em class="fab fa-ethereum"></em>
-                            <input type="text" class="tranx-payment-address" value="0x4156d3342d5c385a87d264f90653733592000581" disabled>
-                            <button class="tranx-payment-copy copy-clipboard-modal" data-clipboard-text="0x4156d3342d5c385a87d264f90653733592000581"><em class="ti ti-files"></em></button>
+                            <input type="text" class="tranx-payment-address" value="{{$admin->address}}}" disabled>
+                            <a class="tranx-payment-copy copy-clipboard-modal" data-clipboard-text="{{$admin->address}}"><em class="ti ti-files"></em></a>
                         </div><!-- .tranx-payment-info -->
                         <!-- @updated on v1.0.1 -->
                         <div class="gaps-3x"></div>
@@ -245,6 +288,27 @@
             document.getElementById("buysubtext").innerHTML = "To become a part of the Eclipse Crypto project and sell ELPS token will only be possible after payment made and receving an approval. As you like to participate our project, please enter the amount of ELPS tokens you wish to sell."
 
         }
+        function process(){
+            let values = document.getElementById('paymentGet').value;
+            document.getElementById('paymentFrom').value = values;
+            document.getElementById('usds').innerHTML = values;
+            document.getElementById('tokens').innerHTML = values;
+            document.getElementById('tok').innerHTML = values + ' ELPS';
+            document.getElementById('toks').innerHTML = values + ' ELPS';
+
+        }
+        function pro(){
+            let values = document.getElementById('paymentFrom').value;
+            document.getElementById('paymentGet').value = values;
+            document.getElementById('usds').innerHTML = values;
+            document.getElementById('tokens').innerHTML = values;
+            document.getElementById('tok').innerHTML = values + ' ELPS';
+            document.getElementById('toks').innerHTML = values + ' ELPS';
+
+        }
+        
+       
+
     </script>
 </body>
 

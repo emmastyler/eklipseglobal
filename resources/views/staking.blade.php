@@ -22,10 +22,36 @@
     @include('layouts.nav')
                 <div class="user-content">
                     <div class="user-kyc">
-                        <form action="{{route('kycinfo')}}" method="post">
+                        <form action="{{route('staking.store')}}" method="post">
                             @csrf
                             <div class="from-step">
-                               
+                                @if(session('error'))
+                                    <center>
+                                    <div style=" color:white; margin-top: -2.2rem; background-color:tomato; border:1px solid tomato; border-radius:2px; margin-top:5px;">
+                                        <p style=" color:white;">{{session('error')}}</p>
+                                       
+                                        
+                                    </div>
+                                    </center>
+                                    @endif
+                                    @if(session('success'))
+                                    <center>
+                                    <div style=" color:white; margin-top: -2.2rem; background-color:rgb(19, 114, 19); border:1px solid rgb(19, 114, 19); border-radius:2px; margin-top:5px;">
+                                        <p style=" color:white;">{{session('success')}}</p>
+                                       
+                                        
+                                    </div>
+                                    </center>
+                                    @endif
+                                    @if(session('stake_success'))
+                                    <center>
+                                    <div style=" color:white; margin-top: -2.2rem; background-color:rgb(19, 114, 19); border:1px solid rgb(19, 114, 19); border-radius:2px; margin-top:5px;">
+                                        <p style=" color:white;">{{session('stake_success')}}</p>
+                                       
+                                        
+                                    </div>
+                                    </center>
+                                    @endif
                                 <div class="from-step-item">
                                     <div class="from-step-heading">
                                         <div class="from-step-number">01</div>
@@ -39,8 +65,8 @@
                                                     <div class="payment-list">
                                                         <div class="row">
                                                             <div class="col-md-3 col-sm-6">
-                                                                <div class="payment-item" onclick="myFunction()">
-                                                                    <input class="payment-check" type="radio" id="payeth" name="payOption" value="tranxETH" checked>
+                                                                <div class="payment-item" >
+                                                                    <input class="payment-check" type="radio" id="payeth" name="payOption" value="10 12">
                                                                     <label for="payeth">
                                                                         <div class="payment-icon payment-icon-eth"><img src="images/icon-ethereum.png" alt="icon"></div>
                                                                         <span class="payment-cur">$10 2% for 12months</span>
@@ -49,8 +75,8 @@
                                                                 </div>
                                                             </div><!-- .col -->
                                                             <div class="col-md-3 col-sm-6">
-                                                                <div class="payment-item" onclick="myFunction1()">
-                                                                    <input class="payment-check" type="radio" id="paylightcoin" name="payOption" value="tranxLTC">
+                                                                <div class="payment-item">
+                                                                    <input class="payment-check" type="radio" id="paylightcoin" name="payOption" value="50 10">
                                                                     <label for="paylightcoin">
                                                                         <div class="payment-icon payment-icon-ltc"><img class="payment-icon" src="images/icon-lightcoin.png" alt="icon"></div>
                                                                         <span class="payment-cur">$50 2% for 10months</span>
@@ -59,8 +85,8 @@
                                                                 </div>
                                                             </div><!-- .col -->
                                                             <div class="col-md-3 col-sm-6">
-                                                                <div class="payment-item" onclick="myFunction2()">
-                                                                    <input class="payment-check" type="radio" id="paybtc" name="payOption" value="tranxBTC">
+                                                                <div class="payment-item">
+                                                                    <input class="payment-check" type="radio" id="paybtc" name="payOption" value="100 8">
                                                                     <label for="paybtc">
                                                                         <div class="payment-icon payment-icon-btc"><em class="payment-icon fab fa-btc"></em></div>
                                                                         <span class="payment-cur">$100 2% for 8months</span>
@@ -69,8 +95,8 @@
                                                                 </div>
                                                             </div><!-- .col -->
                                                             <div class="col-md-3 col-sm-6">
-                                                                <div class="payment-item" onclick="myFunction3()">
-                                                                    <input class="payment-check" type="radio" id="payusd" name="payOption" value="tranxUSD">
+                                                                <div class="payment-item">
+                                                                    <input class="payment-check" type="radio" id="payusd" name="payOption" value="500 6">
                                                                     <label for="payusd">
                                                                         <div class="payment-icon payment-icon-usd"><em class="payment-icon fas fa-credit-card"></em></div>
                                                                         <span class="payment-cur">$500 2% for 6months</span>
@@ -79,8 +105,8 @@
                                                                 </div>
                                                             </div><!-- .col -->
                                                             <div class="col-md-3 col-sm-6">
-                                                                <div class="payment-item" onclick="myFunction3()">
-                                                                    <input class="payment-check" type="radio" id="payusd3" name="payOption" value="tranxUSD">
+                                                                <div class="payment-item">
+                                                                    <input class="payment-check" type="radio" id="payusd3" name="payOption" value="1000 3">
                                                                     <label for="payusd3">
                                                                         <div class="payment-icon payment-icon-usd"><em class="payment-icon fas fa-credit-card"></em></div>
                                                                         <span class="payment-cur">$1000 2% for 3months</span>
@@ -90,122 +116,91 @@
                                                             </div><!-- .col -->
                                                         </div><!-- .row -->
                                                     </div><!-- .payment-list -->
-                                               
+                                                    <div class="gaps-2x"></div>
+                                                    @if($userscs)
+                                                    <div class="payment-calculator-note"><i class="fas fa-info-circle"></i>Summary of stake order.</div>
+                                                    <div class="gaps-1x"></div>
+                                                    <div class="payment-summary">
+                                                        
+                                                        <div class="row">
+                                                           
+                                                            <div class="col-md-6">
+                                                                <div class="payment-summary-item payment-summary-final">
+                                                                    <h6 class="payment-summary-title">Final Stake Amount</h6>
+                                                                    <div class="payment-summary-info">
+                                                                        
+                                                                        @if($userscs->amount_stake)
+                                                                        <span class="payment-summary-amount">{{$userscs->amount_stake}}</span> <span>USD</span>
+                                                                        @endif
+                                                                        
+                                                                    </div>
+                                                                    
+                                                                    
+                                                                </div>
+                                                            </div><!-- .col -->
+                                                           
+                                                            <div class="col-md-6">
+                                                                <div class="payment-summary-item payment-summary-tokens">
+                                                                    <h6 class="payment-summary-title">Total interest after {{$userscs->time_left}} months</h6>
+                                                                   
+                                                                    <div class="payment-summary-info">
+                        
+                                                                     @if($userscs->amount_stake)
+                                                                     <span class="payment-summary-amount">{{$userscs->amount_stake * (0.02) }}</span> <span>USD</span>
+                                                                     <input class="input-bordered" type="text" id="time_later" value="{{$userscs->month}}" name="time_later" style="display:none" readonly>
+                                                                     <input class="input-bordered" type="text" id="timer" name="time_later" value="" style="display: block" readonly>
+                                                                     
+                                                                    </div>
+                                                                    @endif
+                                                                   
+                                                                   {{--  <div class="payment-summary-info">
+                                                                        <span class="payment-summary-amount"></span> <span>or</span>
+                                                                    </div>
+                                                                    <div class="payment-summary-info">
+                                                                        <span class="payment-summary-amount">60</span> <span>ELPS</span>
+                                                                    </div> --}}
+                                                                </div>
+                                                            </div><!-- .col -->
+                                                            <hr/>
+                                                           
+                                                        </div><!-- .row -->
+                                                    </div><!-- .payment-summary -->
+                                                     @endif
+                                                    @if(count($users)==0)
+                                                    <div class="text-center" ><button class="btn btn-primary" type="submit" style="display:block" id="buyToken">Stake</button></div>
+
+                                                    @endif
+                        
+                                                    @if($userscs)
+                                                    @if($userscs->month == 0)
+                                                    <div class="text-center" ><button class="btn btn-primary" type="submit" style="display:block" id="buyToken">Stake</button></div>
+
+                                                    @endif
+                                                    @if($userscs->status == 'Running')
+                                                    <a href="#" class="btn btn-primary payment-btn"  style="display: block;" id="waittoken">Please wait for your present order to expire before a new stake.</a><br/>
+                                                    @endif
+                                                   
+                                                    <a href="{{'/staking/'.$userscs->id}}" class="btn btn-primary payment-btn"  style="display:none;" id="claimtoken" onclick="ourprocess()">Claim stake REWARD</a>
+                                                    
+                                                    @endif    
                                         <div class="gaps-2x"></div>
                                        
                                        
-                                        <div class="from-step-item">
-                                            <div class="from-step-heading">
-                                                <div class="from-step-number">02</div>
-                                                <div class="from-step-head">
-                                                    <h4>Step 2 : Verify Payment</h4>
-                                                    <p>Upload POP to verify your payment.</p>
-                                                </div>
-                                            </div>
-                                            <div class="from-step-content">
-                                               
-                                                <div class="gaps-2x"></div>
-                                                <ul class="nav nav-tabs nav-tabs-bordered" role="tablist">
-                                                   
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" data-bs-toggle="tab" href="#driver-licence">
-                                                            <div class="nav-tabs-icon">
-                                                                <img src="images/icon-licence.png" alt="icon">
-                                                                <img src="images/icon-licence-color.png" alt="icon">
-                                                            </div>
-                                                            <span>Proof Of Payment</span>
-                                                        </a>
-                                                    </li>
-                                                </ul><!-- .nav-tabs-line -->
-                                                <div class="tab-content" id="myTabContent">
-                                                    
-                                                    <div class="tab-pane fade" id="driver-licence">
-                                                        <h5 class="kyc-upload-title">To avoid delays when verifying payment, Please make sure bellow:</h5>
-                                                        <ul class="kyc-upload-list">
-                                                           
-                                                            <li>Document should be good condition and clearly visible.</li>
-                                                            <li>Make sure that there is no light glare on the card.</li>
-                                                        </ul>
-                                                        <div class="gaps-4x"></div>
-                                                        <span class="upload-title">Upload Here Your Proof of Payment</span>
-                                                        <div class="row align-items-center">
-                                                            <div class="col-8">
-                                                                <div class="upload-box">
-                                                                    <div class="upload-zone">
-                                                                        <div class="dz-message" data-dz-message>
-                                                                            <span class="dz-message-text">Drag and drop file</span>
-                                                                            <span class="dz-message-or">or</span>
-                                                                            <p style="color:white;" class="btn btn-primary">SELECT</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-4">
-                                                                <div class="kyc-upload-img">
-                                                                    <img src="images/vector-licence.png" alt="vector">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="gaps-1x"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="gaps-2x"></div>
-                                            </div><!-- .from-step-content -->
-                                        </div><!-- .from-step-item -->
-                                        <div class="gaps-2x"></div><!-- 20px gap -->
 
-                                        <div class="progress-card" style="background-color: #0F4F94; color:white; border-color:#0F4F94;">
-                                            <h3>STAKING HISTORY</h3>
-                                        </div>
-                                        <div class="gaps-3x"></div>
-                                        <div class="table-responsive">
-                                            <table class="table">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Transaction type</th>
-                                                        <th>Date</th>
-                                                        <th>Status</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td><span style="color:rgb(20, 138, 20)">Buy</span></td>
-                                                        <td><span>15 August 2022</span></td>
-                                                        <td><span style="color:rgb(20, 138, 20)">Successful<em class="ti ti-check"></em></span></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span style="color:#ee0b0b">Sell</span></td>
-                                                        <td><span>15 August 2022</span></td>
-                                                        <td><span  style="color:#ee0b0b">Cancelled <em class="ti ti-close"></em></span></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Deposit</span></td>
-                                                        <td><span>15 August 2022</span></td>
-                                                        <td><span>Active <em class="ti ti-pulse"></em></span></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Withdraw</span></td>
-                                                        <td><span>15 August 2022</span></td>
-                                                        <td><span style="color: #FA761D;">Pending <em class="ti ti-control-pause"></em></span></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="gaps-2x"></div><!-- 20px gap -->
-
-                                        <a class="btn btn-primary" href="#" data-bs-toggle="modal" data-bs-target="#kycConfirm">Submit Details</a>
-                                        <div class="gaps-2x"></div><!-- 20px gap -->
+                                        
+                                       
                                     </div><!-- .from-step-content -->
                                 </div><!-- .from-step-item -->
                             </div><!-- .from-step -->
-                       
+                            
+                        
                     </div><!-- .user-kyc -->
                 </div><!-- .user-content -->
             </div><!-- .d-flex -->
         </div><!-- .container -->
     </div>
     <!-- UserWraper End -->
-    <div class="modal fade" id="kycConfirm" tabindex="-1">
+    <div class="modal fade" id="modepop" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="kyc-popup">
@@ -230,7 +225,7 @@
                         <label for="tokenKnow">I understand that, I can only in the token distribution event with the wallet address that was entered in the application form.</label>
                     </div> --}}
                     <div class="gaps-2x"></div>
-                    <div class="text-center"><button class="btn btn-primary" type="submit">Proceed</button></div>
+                    
                 </form>
                 </div><!-- .modal-content -->
             </div><!-- .modal-content -->
@@ -256,7 +251,10 @@
     <script src="assets/js/jquery.bundle1.js?ver=110"></script>
     <script src="assets/js/script1.js?ver=110"></script>
     <script>
-        function myFunction (){
+
+        
+
+       /*  function myFunction (){
             document.getElementById("showstack").style.display = "block";
             document.getElementById("showskrill").style.display = "none";
             document.getElementById("showbitcoin").style.display = "none";
@@ -283,7 +281,66 @@
             document.getElementById("showskrill").style.display = "none";
             document.getElementById("showbitcoin").style.display = "none";
 
+        } */
+        function ourprocess(){
+            localStorage.removeItem('currentTimes');
+                localStorage.removeItem('targetTimes');          
+
         }
+        
+  var interval;
+           let months = document.getElementById('time_later').value;
+           
+           let minutes = months ? (months * 1) : null;
+           let currentTime = localStorage.getItem('currentTimes');
+           let targetTime = localStorage.getItem('targetTimes');
+          
+           if(targetTime == null && currentTime == null && months > 0){
+               currentTime = new Date();
+               targetTime = new Date(currentTime.getTime() + (minutes * 60000));
+               localStorage.setItem('currentTimes', currentTime);
+               localStorage.setItem('targetTimes', targetTime);
+           }
+        else {
+            currentTime = new Date(currentTime);
+            targetTime = new Date(targetTime);
+        }
+        if(checkComplete){
+            interval = setInterval(checkComplete, 1000);
+        }
+        function checkComplete() {
+            if(currentTime > targetTime){
+                clearInterval(interval);
+                document.getElementById('timer').value = 'Completed';
+                if(months > 0){
+                                    document.getElementById('claimtoken').style.display = 'block';
+
+                }
+                document.getElementById('waittoken').style.display = 'none';
+                
+
+            }
+            else {
+                currentTime = new Date();
+               let timer = (targetTime - currentTime)/1000;
+               var d = Math.floor(timer / (3600*24));
+               var h = Math.floor(timer % (3600*24) / 3600);
+               var m = Math.floor(timer % 3600/60);
+               var s = Math.floor(timer % 60);
+
+                
+                //var mDisplay = d > 30 ? (d == 1 ? "day," : "days,")
+               var dDisplay = d > 0 ? d + (d == 1 ? "day " : "days ") : ""
+               var hDisplay = h > 0 ? h + (h == 1 ? "hour " : "hours ") : ""
+               var mDisplay = m > 0 ? m + (m == 1 ? "minute " : "minutes ") : ""
+               var sDisplay = s > 0 ? s + (s == 1 ? "second" : "seconds") : ""
+                document.getElementById('timer').value = dDisplay + hDisplay + mDisplay + sDisplay
+            }
+        }
+        document.onbeforeunload = function(){
+            localStorage.setItem('currentTimes', currentTime)
+        }
+        
     </script>
 </body>
 

@@ -80,7 +80,7 @@
                                         <h6 class="wgs-title text-white animated" data-animate="fadeInUp" data-delay=".1">Address</h6>
                                         <div class="wgs-body">
                                             <ul class="wgs-list mt-3 animated" data-animate="fadeInUp" data-delay=".2">
-                                                <li>ECLIPSE Crypto <br> Company Number ALX455</li>
+                                                <li>EKLIPSE Crypto <br> Company Number ALX455</li>
                                                 <li>2237 Gnatty Creek Road <br> Huntington, NY 11743</li>
                                             </ul>
                                         </div>
@@ -93,7 +93,7 @@
                                             <ul class="wgs-links wgs-links-s3 animated" data-animate="fadeInUp" data-delay=".4">
                                                 <li><a href="#">Whitepaper</a></li>
                                                 <li><a href="#">One Pager</a></li>
-                                                <li><a href="#">Market Research</a></li>
+                                               
                                             </ul>
                                         </div>
                                     </div>
@@ -103,10 +103,9 @@
                                         <h6 class="wgs-title text-white animated" data-animate="fadeInUp" data-delay=".5">Company</h6>
                                         <div class="wgs-body">
                                             <ul class="wgs-links wgs-links-s3 animated" data-animate="fadeInUp" data-delay=".6">
-                                                <li><a href="#">Home</a></li>
+                                               
                                                 <li><a href="#">Tokens</a></li>
-                                                <li><a href="#">Team</a></li>
-                                                <li><a href="#">Roadmap</a></li>
+                                                <li>(1,000,000,000) EKLIPSE SUPPLIED</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -120,14 +119,8 @@
                                         </div>
                                         <div class="wgs-body">
                                             <div class="wgs-subscribe wgs-subscribe-s2">
-                                                <p class="animated" data-animate="fadeInUp" data-delay=".8">ECLIPSE Crypto All the best selling ICO Template. It’s most stylish and modern design with isometric illustration which makes website gorgeous</p>
-                                                <ul class="social pt-2">
-                                                    <li class="animated" data-animate="fadeInUp" data-delay=".9"><a href="#"><em class="social-icon fab fa-facebook-f"></em></a></li>
-                                                    <li class="animated" data-animate="fadeInUp" data-delay=".95"><a href="#"><em class="social-icon fab fa-twitter"></em></a></li>
-                                                    <li class="animated" data-animate="fadeInUp" data-delay="1"><a href="#"><em class="social-icon fab fa-medium-m"></em></a></li>
-                                                    <li class="animated" data-animate="fadeInUp" data-delay="1.05"><a href="#"><em class="social-icon fab fa-github"></em></a></li>
-                                                    <li class="animated" data-animate="fadeInUp" data-delay="1.1"><a href="#"><em class="social-icon fab fa-bitcoin"></em></a></li>
-                                                </ul>
+                                                <p class="animated" data-animate="fadeInUp" data-delay=".8">EKLIPSE GLOBAL</p>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -135,7 +128,7 @@
                             </div><!-- .row -->
                             <div class="footer-bottom pdt-r">
                                 <div class="copyright-text copyright-text-s1 text-center text-sm-start text-lg-center">
-                                    <p>&copy; 2022 ECLIPSE Crypto Template. Template Made by <a href="./">Softnio.</a> <a class="ms-4" href="./">Privacy policy</a></p>
+                                    <p>&copy; 2022 EKLIPSEGLOBAL</p>
                                 </div>
                             </div>
                         </div><!-- .block @e -->

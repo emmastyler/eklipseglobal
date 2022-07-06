@@ -21,10 +21,39 @@
     <!-- Topbar -->
     @include('layouts.nav')
                 
-                        <form action="{{route('kycinfo')}}" method="post">
+                        <form action="{{route('coinlock.store')}}" method="post">
                             @csrf
+                            
                             <div class="user-content">
+                               
                                 <div class="user-panel">
+                                    @if(session('error'))
+                                    <center>
+                                    <div style=" color:white; margin-top: -2.2rem; background-color:tomato; border:1px solid tomato; border-radius:2px; margin-top:5px;">
+                                        <p style=" color:white;">{{session('error')}}</p>
+                                       
+                                        
+                                    </div>
+                                    </center>
+                                    @endif
+                                    @if(session('success'))
+                                    <center>
+                                    <div style=" color:white; margin-top: -2.2rem; background-color:rgb(19, 114, 19); border:1px solid rgb(19, 114, 19); border-radius:2px; margin-top:5px;">
+                                        <p style=" color:white;">{{session('success')}}</p>
+                                       
+                                        
+                                    </div>
+                                    </center>
+                                    @endif
+                                    @if(session('coin_success'))
+                                    <center>
+                                    <div style=" color:white; margin-top: -2.2rem; background-color:rgb(19, 114, 19); border:1px solid rgb(19, 114, 19); border-radius:2px; margin-top:5px;">
+                                        <p style=" color:white;">{{session('coin_success')}}</p>
+                                       
+                                        
+                                    </div>
+                                    </center>
+                                    @endif
                                     <h2 class="user-panel-title">Lock Eclipse or Naira and earn on the go</h2>
                                     <hr/>
                                        
@@ -39,7 +68,7 @@
                                             <div class="row">
                                                 <div class="col-md-6 col-sm-6" >
                                                     <div class="payment-item" onclick="myFunction()">
-                                                        <input class="payment-check" type="radio" id="payeth" name="payOption" value="tranxETH" checked>
+                                                        <input class="payment-check" type="radio" id="payeth" name="payOption" value="tranxETH">
                                                         <label for="payeth" style="background-color: #99089967;  border-color:#99089967;">
                                                             <div class="payment-icon payment-icon-eth" ><img src="images/icon-ethereum.png" alt="icon"></div>
                                                             <span class="payment-cur" style="color: white"><b>LOCK NAIRA</b></span>
@@ -77,12 +106,12 @@
                                                     <div class="payment-get">
                                                         <label for="paymentGet">Lock Amount</label>
                                                         <div class="payment-input" id="payinput" style="display: none">
-                                                            <input class="input-bordered" type="text" id="paymentGet" value="1200">
+                                                            <input class="input-bordered" type="text" id="paymentGet" value="" name="amount_lock_elps">
                                                             <span class="payment-get-cur payment-cal-cur">ELPS</span>
                                                         </div>
                                                         <div class="gaps-2x d-md-none"></div>
                                                         <div class="payment-input"  id="payinput1" style="display: block">
-                                                            <input class="input-bordered" type="text" id="paymentGet" value="1200">
+                                                            <input class="input-bordered" type="text" id="paymentGet" value="" name="amount_lock">
                                                             <span class="payment-get-cur payment-cal-cur">NGN</span>
                                                         </div>
                                                     </div>
@@ -90,10 +119,21 @@
                                                     <div class="payment-from">
                                                         <label for="paymentFrom">Lock days</label>
                                                         <div class="payment-input">
-                                                            <select class="input-bordered" name="swalllet" id="swalllet">
-                                                                <option value="eth">selcet lock days in months</option>
-                                                                <option value="dac"></option>
-                                                                <option value="bic"></option>
+                                                            <select class="input-bordered" name="months" id="swalllet">
+                                                                <option value="NULL">selcet lock days in months</option>
+                                                                <option value="1">1</option>
+                                                                <option value="2">2</option>
+                                                                <option value="3">3</option>
+                                                                <option value="4">4</option>
+                                                                <option value="5">5</option>
+                                                                <option value="6">6</option>
+                                                                <option value="7">7</option>
+                                                                <option value="8">8</option>
+                                                                <option value="9">9</option>
+                                                                <option value="10">10</option>
+                                                                <option value="11">11</option>
+                                                                <option value="12">12</option>
+
                                                             </select>
                                                             <!--<span class="payment-from-cur payment-cal-cur">MONTHS</span>-->
                                                         </div>
@@ -107,43 +147,87 @@
                                             </div><!-- .col -->
                                         </div><!-- .row -->
                                         <div class="gaps-2x"></div>
+                                        @if($userscs)
                                         <div class="payment-calculator-note"><i class="fas fa-info-circle"></i>Summary of coin lock order.</div>
                                         <div class="gaps-1x"></div>
                                         <div class="payment-summary">
+                                            
                                             <div class="row">
+                                               
                                                 <div class="col-md-6">
                                                     <div class="payment-summary-item payment-summary-final">
                                                         <h6 class="payment-summary-title">Final Lock Amount</h6>
                                                         <div class="payment-summary-info">
-                                                            <span class="payment-summary-amount">600.00</span> <span>NGN</span>
+                                                            
+                                                            @if($userscs->amount_lock)
+                                                            <span class="payment-summary-amount">{{$userscs->amount_lock}}</span> <span>NGN</span>
+                                                            @endif
+                                                            
                                                         </div>
                                                         <div class="payment-summary-info">
-                                                            <span class="payment-summary-amount"></span> <span>or</span>
+                                                            @if($userscs->elps_lock)
+                                                            <span class="payment-summary-amount">{{$userscs->elps_lock}}</span> <span>ELPS</span>
+                                                            @endif
                                                         </div>
-                                                        <div class="payment-summary-info">
-                                                            <span class="payment-summary-amount">30.00</span> <span>ELPS</span>
-                                                        </div>
+                                                        
                                                     </div>
                                                 </div><!-- .col -->
                                                
                                                 <div class="col-md-6">
                                                     <div class="payment-summary-item payment-summary-tokens">
-                                                        <h6 class="payment-summary-title">Total interest after ## months</h6>
+                                                        <h6 class="payment-summary-title">Total interest after {{$userscs->time_left}} months</h6>
+                                                       
                                                         <div class="payment-summary-info">
-                                                            <span class="payment-summary-amount">1200</span> <span>NGN</span>
+
+                                                         @if($userscs->amount_lock)
+                                                         <span class="payment-summary-amount">{{$userscs->amount_lock * $userscs->time_left / 100}}</span> <span>NGN</span>
+                                                         <input class="input-bordered" type="text" id="time_later" value="{{$userscs->month}}" name="time_later" style="display:none" readonly>
+                                                         <input class="input-bordered" type="text" id="timer" name="time_later" value="" style="display: block" readonly>
+                                                         
                                                         </div>
-                                                        <div class="payment-summary-info">
+                                                        @else
+                                                        <span class="payment-summary-amount">{{$userscs->elps_lock * $userscs->time_left / 100}}</span> <span>ELPS</span>
+                                                        <input class="input-bordered" type="text" id="time_later" value="{{$userscs->month}}" name="time_later" style="display:none" readonly>
+                                                         <input class="input-bordered" type="text" id="timer" name="time_later" value="" style="display: block" readonly>
+                                                    </div>
+                                                        @endif
+                                                       
+                                                       {{--  <div class="payment-summary-info">
                                                             <span class="payment-summary-amount"></span> <span>or</span>
                                                         </div>
                                                         <div class="payment-summary-info">
                                                             <span class="payment-summary-amount">60</span> <span>ELPS</span>
-                                                        </div>
+                                                        </div> --}}
                                                     </div>
                                                 </div><!-- .col -->
+                                                <hr/>
+                                               
                                             </div><!-- .row -->
                                         </div><!-- .payment-summary -->
+                                         @endif
+                                        @if(count($users)==0)
+                                       
                                         <a href="#" class="btn btn-primary payment-btn" data-bs-toggle="modal" data-bs-target="#tranxETH" style="display: none;" id="buyToken"></a>
-                                   
+
+                                        
+                                        @endif
+
+                                        @if($userscs)
+                                        
+                                        @if($userscs->status == 'Completed' && $userscs->amount_lock)
+                                        <a href="#" class="btn btn-primary payment-btn" data-bs-toggle="modal" data-bs-target="#tranxETH" style="display: block;" id="buyToken">LOCK NGN</a><br/>
+                                        @endif
+                                        @if($userscs->status == 'Completed' && $userscs->elps_lock)
+                                        <a href="#" class="btn btn-primary payment-btn" data-bs-toggle="modal" data-bs-target="#tranxETH" style="display: block;" id="buyToken">LOCK ELPS</a><br/>
+                                        @endif
+                                        @if($userscs->status == 'Running')
+                                        <a href="#" class="btn btn-primary payment-btn"  style="display: block;" id="waittoken">Please wait for your present order to expire before a new lock.</a><br/>
+                                        @endif
+                                       
+                                        <a href="{{'/coinlock/'.$userscs->id}}" class="btn btn-primary payment-btn"  style="display:none;" id="claimtoken" onclick="ourprocess()">Claim LOCK REWARD</a>
+                                        
+                                        @endif         
+
                                
                     </div><!-- .user-kyc -->
                 </div><!-- .user-content -->
@@ -201,7 +285,7 @@
                         <label for="tokenKnow">I understand that, I can only in the token distribution event with the wallet address that was entered in the application form.</label>
                     </div> --}}
                     <div class="gaps-2x"></div>
-                    <div class="text-center"><button class="btn btn-primary" type="submit">Proceed with Coin Lock</button></div>
+                    <div class="text-center"><button class="btn btn-primary" type="submit"  onclick="starttimer()">Proceed with Coin Lock</button></div>
                 </form>
                 </div><!-- .modal-content -->
             </div><!-- .modal-content -->
@@ -229,6 +313,9 @@
     <script src="assets/js/jquery.bundle1.js?ver=110"></script>
     <script src="assets/js/script1.js?ver=110"></script>
     <script>
+       
+        
+        
         function myFunction(){
             document.getElementById("buyToken").style.display = "block"
             document.getElementById("payinput").style.display = "none"
@@ -241,6 +328,7 @@
 
         }
         function myFunction1(){
+            document.getElementById("buyToken").style.display = "block"
             document.getElementById("payinput").style.display = "block"
             document.getElementById("payinput1").style.display = "none"
             document.getElementById("buyToken").innerHTML = "LOCK ELPS"
@@ -249,6 +337,68 @@
             document.getElementById("buytextp").style.display = "none"
             document.getElementById("buysubtextp").style.display = "none"
         }
+        function ourprocess(){
+            localStorage.removeItem('currentTime');
+                localStorage.removeItem('targetTime');
+                
+
+        }
+        
+  var interval;
+           let months = document.getElementById('time_later').value;
+           
+           let minutes = months ? (months * 1) : null;
+           let currentTime = localStorage.getItem('currentTime');
+           let targetTime = localStorage.getItem('targetTime');
+          
+           if(targetTime == null && currentTime == null && months > 0){
+               currentTime = new Date();
+               targetTime = new Date(currentTime.getTime() + (minutes * 60000));
+               localStorage.setItem('currentTime', currentTime);
+               localStorage.setItem('targetTime', targetTime);
+           }
+        else {
+            currentTime = new Date(currentTime);
+            targetTime = new Date(targetTime);
+        }
+        if(checkComplete){
+            interval = setInterval(checkComplete, 1000);
+        }
+        function checkComplete() {
+            if(currentTime > targetTime){
+                clearInterval(interval);
+                document.getElementById('timer').value = 'Completed';
+                if(months > 0){
+                                    document.getElementById('claimtoken').style.display = 'block';
+
+                }
+                document.getElementById('waittoken').style.display = 'none';
+                
+
+            }
+            else {
+                currentTime = new Date();
+               let timer = (targetTime - currentTime)/1000;
+               var d = Math.floor(timer / (3600*24));
+               var h = Math.floor(timer % (3600*24) / 3600);
+               var m = Math.floor(timer % 3600/60);
+               var s = Math.floor(timer % 60);
+
+                
+                //var mDisplay = d > 30 ? (d == 1 ? "day," : "days,")
+               var dDisplay = d > 0 ? d + (d == 1 ? "day " : "days ") : ""
+               var hDisplay = h > 0 ? h + (h == 1 ? "hour " : "hours ") : ""
+               var mDisplay = m > 0 ? m + (m == 1 ? "minute " : "minutes ") : ""
+               var sDisplay = s > 0 ? s + (s == 1 ? "second" : "seconds") : ""
+                document.getElementById('timer').value = dDisplay + hDisplay + mDisplay + sDisplay
+            }
+        }
+        document.onbeforeunload = function(){
+            localStorage.setItem('currentTime', currentTime)
+        }
+        
+         
+             
     </script>
 </body>
 

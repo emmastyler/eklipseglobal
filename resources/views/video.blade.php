@@ -21,29 +21,39 @@
    @include('layouts.nav')
                 <div class="user-content">
                     <div class="user-panel">
+                       <form action="{{route('videocontensy.store')}}" method="post">
+                        @csrf
                        
                         <div class="progress-card" style="background-color: #0F4F94; color:white; border-color:#0F4F94;">
                             <h3>Upload video contensy</h3>
                         </div>
                         <div class="gaps-3x"></div>
-                        <form>
+                        @if(session('success'))
+                                                <div style=" color:white;padding-left:5px; background-color:rgb(19, 114, 19); border:1px solid rgb(19, 114, 19); border-radius:2px; margin-top:5px;">
+                                                    <b><p style=" color:white;">{{session('success')}}</p></b>
+                                                   
+                                                    
+                                                </div>
+                                                <div class="gaps-3x"></div>
+                                                
+                                                @endif
                         <div class="col-md-6">
                                                 
                             <div class="input-item input-with-label">
                                 <label for="token-address" class="input-item-label">Youtube Video Link</label>
-                                <input class="input-bordered" type="text" id="token-address" name="token-address" value="">
+                                <input class="input-bordered" type="text" id="token-address" name="type_y" value="" required>
                                 <span class="input-note"></span>
                             </div><!-- .input-item -->
 
                             <div class="input-item input-with-label">
                                 <label for="token-address" class="input-item-label">Facebook Video Link</label>
-                                <input class="input-bordered" type="text" id="token-address" name="token-address" value="">
+                                <input class="input-bordered" type="text" id="token-address" name="type_f" value="" required>
                                 <span class="input-note"></span>
                             </div><!-- .input-item -->
                             
                             <div class="input-item input-with-label">
                                 <label for="token-address" class="input-item-label">whatsapp Video Link</label>
-                                <input class="input-bordered" type="text" id="token-address" name="token-address" value="">
+                                <input class="input-bordered" type="text" id="token-address" name="type_w" value="" required>
                                 <span class="input-note"></span>
                             </div><!-- .input-item -->
                         </div>

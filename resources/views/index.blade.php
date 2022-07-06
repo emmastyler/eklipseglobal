@@ -9,7 +9,7 @@
     <!-- Fav Icon  -->
     <link rel="shortcut icon" href="images/favicon.png">
     <!-- Site Title  -->
-    <title>Salvia | ECLIPSE Crypto - ECLIPSE Landing Page &amp; Multi-Purpose Cryptocurrency HTML Template</title>
+    <title>Home | EKLIPSEGLOBAL</title>
     <!-- Bundle and Base CSS -->
     <link rel="stylesheet" href="assets/css/vendor.bundle.css?ver=200">
     <link rel="stylesheet" href="assets/css/style-salvia.css?ver=200">
@@ -31,7 +31,7 @@
                                 <a href="./" class="logo-link">
                                     {{-- <img class="logo-dark" src="images/logo.png" srcset="images/logo2x.png 2x" alt="logo"> --}}
                                     {{-- <img class="logo-light" src="images/logo-full-white.png" srcset="images/logo-full-white2x.png 2x" alt="logo"> --}}
-                                    <h3 style="color: black">Eclipse</h3>
+                                    <h3 style="color: black">Eklipse</h3>
                                     
                                 </a>
                             </div>
@@ -50,8 +50,7 @@
                                         <li class="menu-item"><a class="menu-link nav-link" href="#about">About</a></li>
                                         <li class="menu-item"><a class="menu-link nav-link" href="#overview">Overview</a></li>
                                         <li class="menu-item"><a class="menu-link nav-link" href="#works">How It Works</a></li>
-                                        <li class="menu-item"><a class="menu-link nav-link" href="#token">ECLIPSE Token</a></li>
-                                        <li class="menu-item"><a class="menu-link nav-link" href="#roadmap">Roadmap</a></li>
+                                        <li class="menu-item"><a class="menu-link nav-link" href="#token">EKLIPSE Token</a></li>
                                         <li class="menu-item"><a class="menu-link nav-link" href="#team">Team</a></li>
                                         <li class="menu-item has-sub">
                                             <a class="menu-link nav-link menu-toggle" href="#">More</a>
@@ -64,7 +63,7 @@
                                     <ul class="menu-btns align-items-center animated remove-animation" data-animate="fadeInDown" data-delay=".85">
                                         <li><a href="{{url('/register')}}" class="btn btn-md btn-auto btn-secondary btn-outline no-change"><span>Sign Up</span></a></li>
                                         <li><a href="{{url('/login')}}" class="btn btn-md btn-auto btn-secondary no-change focus"><span>Login</span></a></li>
-                                        <li><a href="#" class="btn btn-rg btn-secondary no-change"><span>Buy Token</span></a></li>
+                                        <li><a href="{{url('/register')}}" class="btn btn-rg btn-secondary no-change"><span>Buy Token</span></a></li>
                                     </ul>
                                     
                                 </nav>
@@ -90,8 +89,7 @@
                                                 <div class="cpn-btns">
                                                     <ul class="btn-grp animated" data-animate="fadeInUp" data-delay="1.45">
                                                         <li><a class="btn btn-md btn-primary btn-outline" href="#">White Paper</a></li>
-                                                        <li><a class="btn btn-md btn-primary btn-outline" href="#">One Pager</a></li>
-                                                    </ul>
+                                                        
                                                 </div>
                                                 <div class="cpn-social">
                                                     <h4 class="title-xs animated" data-animate="fadeInUp" data-delay="1.55">JOIN OUR COMMUNITY</h4>
@@ -108,29 +106,28 @@
                                         </div><!-- .col -->
                                         <div class="col-lg-6 col-xl-5 col-md-8 col-sm-9">
                                             <div class="token-status token-status-s3 round bg-theme tc-light animated" data-animate="fadeInUp" data-delay="2">
-                                                <h4 class="title-md title-thin">Pre-Sale Ends In</h4>
-                                                <div class="countdown-s2 countdown" data-date="2022/06/11 20:00:00"></div>
+                                                
                                                 <div class="token-info token-info-s1">
                                                     <div class="token-info-item token-info-item-s1">
                                                         <div class="token-info-item-list">
                                                             <span>Token Price:</span>
-                                                            <h4>1 ICOX=$0.02</h4>
+                                                            <h4>1 ELPS=$1</h4>
                                                         </div>
                                                         <div class="token-info-item-list">
                                                             <span>We Accept:</span>
-                                                            <h4><em class="fab fa-ethereum"></em> ETH</h4>
+                                                            <h4><em class="fab fa-btc"></em> BTC</h4>
                                                         </div>
                                                     </div>
                                                     <div class="token-info-item token-info-item-s1">
                                                         <span>Tokens Available<br class="d-none d-md-block"> on Pre-Sale:</span>
-                                                        <h4>90,000,000 ICOX</h4>
+                                                        <h4>90,000,000 ELPS</h4>
                                                     </div>
                                                 </div>
                                                 <div class="token-action token-action-s2 flex-wrap flex-sm-nowrap">
-                                                    <a href="#" class="btn btn-md btn-secondary">Buy Tokens Now</a>
+                                                    <a href="{{url('/register')}}" class="btn btn-md btn-secondary">Buy Tokens Now</a>
                                                     <div class="token-min-s2">
                                                         <span>Minimum Purchase:</span>
-                                                        <span>10,000 ICOX</span>
+                                                        <span>1 ELPS</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -160,7 +157,7 @@
                                 <div class="col-lg-7">
                                     <!-- Section Head @s -->
                                     <div class="nk-block-text pdb-r">
-                                        <h2 class="title title-thin animated" data-animate="fadeInUp" data-delay=".1">About ECLIPSE Crypto</h2>
+                                        <h2 class="title title-thin animated" data-animate="fadeInUp" data-delay=".1">About EKLIPSE Crypto</h2>
                                         <p class="animated" data-animate="fadeInUp" data-delay=".2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
                                         <p class="animated" data-animate="fadeInUp" data-delay=".3">Deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
                                     </div><!-- .section-head @e -->
@@ -201,7 +198,7 @@
                                                     <em class="icon fas fa-check"></em>
                                                 </div>
                                                 <div class="feature-text feature-text-s1">
-                                                    <p>Owners of cryptocurrency keep their digital coins in ICO</p>
+                                                    <p>Owners of cryptocurrency keep their digital coins in EKLIPSE</p>
                                                 </div>
                                             </div>
                                         </div><!-- .col -->
@@ -424,8 +421,8 @@
                                 <div class="col-lg-4">
                                     <!-- Section Head @s -->
                                     <div class="section-head pb-lg-0">
-                                        <h2 class="title title-thin animated" data-animate="fadeInUp" data-delay=".2">Introducing ICO Usercenter</h2>
-                                        <p class=" animated" data-animate="fadeInUp" data-delay=".3">First of we release our major update with usercenter design which is most important part of ICO Token Sales management. It allows to manage whole process of tokens sales.</p>
+                                        <h2 class="title title-thin animated" data-animate="fadeInUp" data-delay=".2">Introducing EKLIPSE Usercenter</h2>
+                                        <p class=" animated" data-animate="fadeInUp" data-delay=".3">First of we release our major update with usercenter design which is most important part of EKLIPSE Token Sales management. It allows to manage whole process of tokens sales.</p>
                                     </div><!-- .section-head @e -->
                                 </div><!-- .col -->
                             </div><!-- .row -->
@@ -479,8 +476,8 @@
                     <div class="section section-tokendes tc-light">
                         <div class="container">
                             <div class="section-head section-head-s7 text-center wide-auto-sm">
-                                <h2 class="title title-thin animated" data-animate="fadeInUp" data-delay=".1">ECLIPSE Crypto <br>Token Economics</h2>
-                                <p class="lead animated" data-animate="fadeInUp" data-delay=".2">Our initial coin offering will run till softcap reached.Full details of the ICO can be found within the platform.</p>
+                                <h2 class="title title-thin animated" data-animate="fadeInUp" data-delay=".1">EKLIPSE Crypto <br>Token Economics</h2>
+                                <p class="lead animated" data-animate="fadeInUp" data-delay=".2">Our initial coin offering will run till softcap reached.Full details of the EKLIPSE can be found within the platform.</p>
                             </div><!-- .section-head @e -->
                             <!-- .block @s -->
                             <div class="nk-block">
@@ -488,37 +485,37 @@
                                     <div class="row gutter-vr-30px">
                                         <div class="col-lg-4 col-md-6">
                                             <div class="token-sale-box animated" data-animate="fadeInUp" data-delay=".3">
-                                                <span class="token-sale-info">24,000,000</span>
+                                                <span class="token-sale-info">1,000,000,000</span>
                                                 <span class="token-sale-title">TOTAL TOKEN SUPPLY</span>
                                             </div>
                                         </div><!-- .col -->
                                         <div class="col-lg-4 col-md-6">
                                             <div class="token-sale-box animated" data-animate="fadeInUp" data-delay=".4">
                                                 <span class="token-sale-info">20,000,000</span>
-                                                <span class="token-sale-title">HARDCAP (ICOX)</span>
+                                                <span class="token-sale-title">HARDCAP (ELPS)</span>
                                             </div>
                                         </div><!-- .col -->
                                         <div class="col-lg-4 col-md-6">
                                             <div class="token-sale-box animated" data-animate="fadeInUp" data-delay=".5">
                                                 <span class="token-sale-info">5,000,000</span>
-                                                <span class="token-sale-title">SOFTCAP (ICOX)</span>
+                                                <span class="token-sale-title">SOFTCAP (ELPS)</span>
                                             </div>
                                         </div><!-- .col -->
                                         <div class="col-lg-4 col-md-6">
                                             <div class="token-sale-box animated" data-animate="fadeInUp" data-delay=".6">
-                                                <span class="token-sale-info">14,400,000</span>
+                                                <span class="token-sale-info">100,000,000</span>
                                                 <span class="token-sale-title">TOKENS FOR PUBLIC</span>
                                             </div>
                                         </div><!-- .col -->
                                         <div class="col-lg-4 col-md-6">
                                             <div class="token-sale-box animated" data-animate="fadeInUp" data-delay=".7">
-                                                <span class="token-sale-info">$0.50 USD</span>
-                                                <span class="token-sale-title">ICO TOKEN PRICE</span>
+                                                <span class="token-sale-info">$1 USD</span>
+                                                <span class="token-sale-title">EKLIPSE TOKEN PRICE</span>
                                             </div>
                                         </div><!-- .col -->
                                         <div class="col-lg-4 col-md-6">
                                             <div class="token-sale-box animated" data-animate="fadeInUp" data-delay=".8">
-                                                <span class="token-sale-info">ETH, BTC, USD</span>
+                                                <span class="token-sale-info">NGN, BTC, USD</span>
                                                 <span class="token-sale-title">ACCEPTED CURRENCY</span>
                                             </div>
                                         </div><!-- .col -->
@@ -540,21 +537,21 @@
                                         </div><!-- .col -->
                                         <div class="col-xl-3 col-md-4">
                                             <div class="token-bonus-item two animated" data-animate="fadeInUp" data-delay=".3">
-                                                <span class="token-bonus-title">ICO SALE - WEEK 1</span>
+                                                <span class="token-bonus-title">EKLIPSE SALE - WEEK 1</span>
                                                 <span class="token-bonus-percent">15%</span>
                                                 <span class="token-bonus-txt">Bonus</span>
                                             </div>
                                         </div><!-- .col -->
                                         <div class="col-xl-3 col-md-4">
                                             <div class="token-bonus-item three animated" data-animate="fadeInUp" data-delay=".4">
-                                                <span class="token-bonus-title">ICO SALE - WEEK 2</span>
+                                                <span class="token-bonus-title">EKLIPSE SALE - WEEK 2</span>
                                                 <span class="token-bonus-percent">0%</span>
                                                 <span class="token-bonus-txt">Bonus</span>
                                             </div>
                                         </div><!-- .col -->
                                     </div><!-- .row -->
                                     <div class="text-center pdt-r animated" data-animate="fadeInUp" data-delay=".5">
-                                        <a href="" class="btn btn-lg btn-secondary">Buy ECLIPSE Crypto Tokens Now</a>
+                                        <a href="{{url('/register')}}" class="btn btn-lg btn-secondary">Buy EKLIPSE Crypto Tokens Now</a>
                                     </div>
                                 </div>
                             </div><!-- .block @e -->
@@ -613,51 +610,41 @@
                         <!-- Block @s -->
                         <div class="section-head section-head-s7 text-center wide-auto-sm">
                             <h2 class="title title-thin animated" data-animate="fadeInUp" data-delay=".1">Documentation</h2>
-                            <p class="lead animated" data-animate="fadeInUp" data-delay=".2">Download the whitepaper and learn about ICO Token, the unique ECLIPSE Crypto approach and the team/advisors.</p>
+                            <p class="lead animated" data-animate="fadeInUp" data-delay=".2">Read through the whitepaper and learn about EKLIPSE Token, the unique EKLIPSE Crypto approach and the team/advisors.</p>
                         </div><!-- .section-head @e -->
                         <div class="nk-block nk-block-features">
                             <div class="row">
-                                <div class="col-lg-3 col-sm-6">
+                                <div class="col-lg-4 col-sm-6">
                                     <div class="feature feature-document animated" data-animate="fadeInUp" data-delay=".3">
-                                        <div class="feature-document-img">
+                                        <div class="feature-document-img" style="opacity: 0.2">
                                             <img src="images/salvia/docs-sm-a.jpg" alt="">
                                         </div>
                                         <div class="feature-document-text">
-                                            <span class="feature-document-info">White Paper<span>(PDF)</span></span>
-                                            <a href="#" class="feature-document-link"><em class="ti ti-import"></em></a>
+                                            <span class="feature-document-info">White Paper<span></span></span>
+                                            <a href="#" class="feature-document-link"></a>
                                         </div>
                                     </div>
                                 </div><!-- .col -->
-                                <div class="col-lg-3 col-sm-6">
-                                    <div class="feature feature-document animated" data-animate="fadeInUp" data-delay=".4">
-                                        <div class="feature-document-img">
-                                            <img src="images/salvia/docs-sm-b.jpg" alt="">
-                                        </div>
-                                        <div class="feature-document-text">
-                                            <span class="feature-document-info">One Pager<span>(PDF)</span></span>
-                                            <a href="#" class="feature-document-link"><em class="ti ti-import"></em></a>
-                                        </div>
-                                    </div>
-                                </div><!-- .col -->
-                                <div class="col-lg-3 col-sm-6">
+                                
+                                <div class="col-lg-4 col-sm-6">
                                     <div class="feature feature-document animated" data-animate="fadeInUp" data-delay=".5">
-                                        <div class="feature-document-img">
+                                        <div class="feature-document-img" style="opacity: 0.2">
                                             <img src="images/salvia/docs-sm-c.jpg" alt="">
                                         </div>
                                         <div class="feature-document-text">
-                                            <span class="feature-document-info">Terms of Sales<span>(PDF)</span></span>
-                                            <a href="#" class="feature-document-link"><em class="ti ti-import"></em></a>
+                                            <span class="feature-document-info">Terms of Sales<span></span></span>
+                                            <a href="#" class="feature-document-link"></a>
                                         </div>
                                     </div>
                                 </div><!-- .col -->
-                                <div class="col-lg-3 col-sm-6">
+                                <div class="col-lg-4 col-sm-6">
                                     <div class="feature feature-document animated" data-animate="fadeInUp" data-delay=".6">
-                                        <div class="feature-document-img">
+                                        <div class="feature-document-img" style="opacity: 0.2">
                                             <img src="images/salvia/docs-sm-d.jpg" alt="">
                                         </div>
                                         <div class="feature-document-text">
-                                            <span class="feature-document-info">Privacy &amp; Policy<span>(PDF)</span></span>
-                                            <a href="#" class="feature-document-link"><em class="ti ti-import"></em></a>
+                                            <span class="feature-document-info">Privacy &amp; Policy<span></span></span>
+                                            <a href="#" class="feature-document-link"></a>
                                         </div>
                                     </div>
                                 </div><!-- .col -->
@@ -666,100 +653,13 @@
                     </div>
                 </section>
                 <!-- // -->
-                <section class="section bg-white" id="roadmap">
-                    <div class="container">
-                        <!-- Section Head @s -->
-                        <div class="row justify-content-center">
-                            <div class="col-lg-6">
-                                <div class="section-head section-head-s7 text-center wide-auto-sm">
-                                    <h2 class="title title-thin animated" data-animate="fadeInUp" data-delay=".1">Roadmap</h2>
-                                    <p class="lead animated" data-animate="fadeInUp" data-delay=".2">Our roadmap is a planned where we take on the most complex problems and turn them into great solutions</p>
-                                </div><!-- .section-head @e -->
-                            </div><!-- .col -->
-                        </div><!-- .row -->
-                        <!-- Block @s -->
-                        <div class="nk-block">
-                            <div class="row justify-content-center text-center">
-                                <div class="col-xl-12">
-                                    <div class="roadmap-carousel-container animated" data-animate="fadeInUp" data-delay=".3">
-                                        <div class="has-carousel roadmap-carousel owl-carousel" data-items="5" data-items-mobile-s="1" data-margin="15" data-dots="true">
-                                            <div class="roadmap roadmap-done roadmap-s3">
-                                                <div class="roadmap-step roadmap-step-s3">
-                                                    <div class="roadmap-head roadmap-head-s3">
-                                                        <span class="roadmap-time roadmap-time-s3">March 2022</span>
-                                                    </div>
-                                                    <p>Start of the ECLIPSE Crypto Platform Development</p>
-                                                </div>
-                                            </div>
-                                            <div class="roadmap roadmap-done roadmap-s3">
-                                                <div class="roadmap-step roadmap-step-s3">
-                                                    <div class="roadmap-head roadmap-head-s3">
-                                                        <span class="roadmap-time roadmap-time-s3">April 2022</span>
-                                                    </div>
-                                                    <p>Start of the Preparation for the ICO Token Sale</p>
-                                                </div>
-                                            </div>
-                                            <div class="roadmap roadmap-running roadmap-s3">
-                                                <div class="roadmap-step roadmap-step-s3">
-                                                    <div class="roadmap-head roadmap-head-s3">
-                                                        <span class="roadmap-time roadmap-time-s3">October 2022</span>
-                                                    </div>
-                                                    <p>ICO Platform Launched with full solutions</p>
-                                                </div>
-                                            </div>
-                                            <div class="roadmap roadmap-s3">
-                                                <div class="roadmap-step roadmap-step-s3">
-                                                    <div class="roadmap-head roadmap-head-s3">
-                                                        <span class="roadmap-time roadmap-time-s3">January 2022</span>
-                                                    </div>
-                                                    <p>Partnership for the future EcoSystem</p>
-                                                </div>
-                                            </div>
-                                            <div class="roadmap roadmap-s3">
-                                                <div class="roadmap-step roadmap-step-s3">
-                                                    <div class="roadmap-head roadmap-head-s3">
-                                                        <span class="roadmap-time roadmap-time-s3">June 2022</span>
-                                                    </div>
-                                                    <p>ICO Wallet full version release</p>
-                                                </div>
-                                            </div>
-                                            <div class="roadmap roadmap-s3">
-                                                <div class="roadmap-step roadmap-step-s3">
-                                                    <div class="roadmap-head roadmap-head-s3">
-                                                        <span class="roadmap-time roadmap-time-s3">December 2022</span>
-                                                    </div>
-                                                    <p>The firest product ready to goes live to all business</p>
-                                                </div>
-                                            </div>
-                                            <div class="roadmap roadmap-s3">
-                                                <div class="roadmap-step roadmap-step-s3">
-                                                    <div class="roadmap-head roadmap-head-s3">
-                                                        <span class="roadmap-time roadmap-time-s3">MarchQ2 2022</span>
-                                                    </div>
-                                                    <p>Start of the ECLIPSE Crypto Platform Development.</p>
-                                                </div>
-                                            </div>
-                                            <div class="roadmap roadmap-s3">
-                                                <div class="roadmap-step roadmap-step-s3">
-                                                    <div class="roadmap-head roadmap-head-s3">
-                                                        <span class="roadmap-time roadmap-time-s3">April 2022</span>
-                                                    </div>
-                                                    <p>Start of the Preparation for the ICO Token Sale</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!-- .col -->
-                            </div><!-- .row -->
-                        </div><!-- .block @e -->
-                    </div>
-                </section>
+
                 <!-- // -->
                 <section class="section bg-theme ov-h text-center tc-light overlay-x">
                     <div class="container">
                         <div class="section-head section-head-s7 wide-auto-sm">
                             <h2 class="title title-thin animated" data-animate="fadeInUp" data-delay=".1">Beta Products</h2>
-                            <p class="lead animated" data-animate="fadeInUp" data-delay=".2">ICO Backend is the ICO token sales management software,which helps you to lunch and mange your ICO.</p>
+                            <p class="lead animated" data-animate="fadeInUp" data-delay=".2">EKLIPSE Backend is the EKLIPSE token sales management software,which helps you to lunch and mange your EKLIPSE.</p>
                         </div>
                         <!-- Block @s -->
                         <div class="nk-block nk-block-text-wrap">
@@ -1160,40 +1060,72 @@
                             <div class="col-lg-4">
                                 <div class="section-head section-head-s7 wide-auto-sm text-lg-start text-center">
                                     <h2 class="title title-thin animated" data-animate="fadeInUp" data-delay=".1">FAQs</h2>
-                                    <p class="lead animated" data-animate="fadeInUp" data-delay=".2">Below we’ve provided a bit of ICO, ICO Token, cryptocurrencies, and few others common question answers. If you have any other questions, please get in touch via email.</p>
+                                    <p class="lead animated" data-animate="fadeInUp" data-delay=".2">Below we’ve provided a bit of EKLIPSE, EKLIPSE Token, cryptocurrencies, and few others common question answers. If you have any other questions, please get in touch via email.</p>
                                 </div>
                             </div><!-- .col -->
                             <div class="col-lg-7">
                                 <div class="accordion animated" data-animate="fadeInUp" data-delay=".3" id="faq-36">
                                     <div class="accordion-item accordion-item-s3">
-                                        <h5 class="accordion-title accordion-title-sm" data-bs-toggle="collapse" data-bs-target="#faq-36-1">What is ECLIPSE Crypto? <span class="accordion-icon accordion-icon-s1"></span></h5>
+                                        <h5 class="accordion-title accordion-title-sm" data-bs-toggle="collapse" data-bs-target="#faq-36-1">What is EKLIPSE Crypto? <span class="accordion-icon accordion-icon-s1"></span></h5>
                                         <div id="faq-36-1" class="collapse show" data-bs-parent="#faq-36">
                                             <div class="accordion-content">
-                                                <p>ECLIPSE Crypto - is unique platform; that is secure, smart and easy-to-use platform, and completely disrupting the way businesses raise capital.</p>
+                                                <p>Eklipse is a token under the etherium block chain, operating as a sole token in the Eklipse Global exchange.</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="accordion-item accordion-item-s3">
-                                        <h5 class="accordion-title accordion-title-sm collapsed" data-bs-toggle="collapse" data-bs-target="#faq-36-2">What cryptocurrencies can I use to purchase? <span class="accordion-icon accordion-icon-s1"></span></h5>
+                                        <h5 class="accordion-title accordion-title-sm collapsed" data-bs-toggle="collapse" data-bs-target="#faq-36-2">HOW CAN I ACQUIRE ECLIPSE?                                            <span class="accordion-icon accordion-icon-s1"></span></h5>
                                         <div id="faq-36-2" class="collapse" data-bs-parent="#faq-36">
                                             <div class="accordion-content">
-                                                <p>ECLIPSE Crypto - is unique platform; that is secure, smart and easy-to-use platform, and completely disrupting the way businesses raise capital.</p>
+                                                <p>Eclipse can only be gotten through mining and buying in the Eklipse Global exchange.</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="accordion-item accordion-item-s3">
-                                        <h5 class="accordion-title accordion-title-sm collapsed" data-bs-toggle="collapse" data-bs-target="#faq-36-3">How can I participate in the ICO Token sale? <span class="accordion-icon accordion-icon-s1"></span></h5>
+                                        <h5 class="accordion-title accordion-title-sm collapsed" data-bs-toggle="collapse" data-bs-target="#faq-36-3">How can I participate in the EKLIPSE Token sale? <span class="accordion-icon accordion-icon-s1"></span></h5>
                                         <div id="faq-36-3" class="collapse" data-bs-parent="#faq-36">
                                             <div class="accordion-content">
-                                                <p>ECLIPSE Crypto - is unique platform; that is secure, smart and easy-to-use platform, and completely disrupting the way businesses raise capital.</p>
+                                                <p>We have various deposit option, Nigerians are advice to use paystack. It allows you to deposit using direct bank transfer, USSD and Debit Card. Other deposit option, SKRILL OR BITCOIN are mainly for Foreigners.</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="accordion-item accordion-item-s3">
-                                        <h5 class="accordion-title accordion-title-sm collapsed" data-bs-toggle="collapse" data-bs-target="#faq-36-4">How do I benefit from the ICO Token? <span class="accordion-icon accordion-icon-s1"></span></h5>
+                                        <h5 class="accordion-title accordion-title-sm collapsed" data-bs-toggle="collapse" data-bs-target="#faq-36-4">WHY MUST I BUY THE MINING MACHINE?<span class="accordion-icon accordion-icon-s1"></span></h5>
                                         <div id="faq-36-4" class="collapse" data-bs-parent="#faq-36">
                                             <div class="accordion-content">
-                                                <p>ECLPSE Crypto - is unique platform; that is secure, smart and easy-to-use platform, and completely disrupting the way businesses raise capital.</p>
+                                                <p>You buy the machine to enable you to mine eclipse which is directly spendable or that can be exchange to Fiat currency in the Eklipse Global Exchange.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item accordion-item-s3">
+                                        <h5 class="accordion-title accordion-title-sm collapsed" data-bs-toggle="collapse" data-bs-target="#faq-36-5">WHO IS A MINER?<span class="accordion-icon accordion-icon-s1"></span></h5>
+                                        <div id="faq-36-5" class="collapse" data-bs-parent="#faq-36">
+                                            <div class="accordion-content">
+                                                <p> Someone who is rightfully recognize by Eklipse Global exchange who has purchased a mining machine and has mined and sold Eclipse token.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item accordion-item-s3">
+                                        <h5 class="accordion-title accordion-title-sm collapsed" data-bs-toggle="collapse" data-bs-target="#faq-36-6">WHO IS A TRADER? <span class="accordion-icon accordion-icon-s1"></span></h5>
+                                        <div id="faq-36-6" class="collapse" data-bs-parent="#faq-36">
+                                            <div class="accordion-content">
+                                                <p>A trader is someone who is rightfully recognize by Eklipse Global exchange that has purchased and sold  eklipse token in the Eklipse Global exchange</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item accordion-item-s3">
+                                        <h5 class="accordion-title accordion-title-sm collapsed" data-bs-toggle="collapse" data-bs-target="#faq-36-7">WHO IS AN AFFILIATE?<span class="accordion-icon accordion-icon-s1"></span></h5>
+                                        <div id="faq-36-7" class="collapse" data-bs-parent="#faq-36">
+                                            <div class="accordion-content">
+                                                <p>Is someone who is rightfully recognize by the Eklipse Global exchange, that has registered and paid a stable fee to our dispatch personnel with the aids of promoting and earning a lucrative commissions in the Eklipse Global exchange.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item accordion-item-s3">
+                                        <h5 class="accordion-title accordion-title-sm collapsed" data-bs-toggle="collapse" data-bs-target="#faq-36-8">WHO ARE DISPATCH TEAM?<span class="accordion-icon accordion-icon-s1"></span></h5>
+                                        <div id="faq-36-8" class="collapse" data-bs-parent="#faq-36">
+                                            <div class="accordion-content">
+                                                <p>They are set of users choose by the Eklipse Global team systematically to manage the affairs of eclipse global under the protocol rights of EkLIPSE GLOBAL.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -1295,7 +1227,7 @@
                                         <h6 class="wgs-title text-white animated" data-animate="fadeInUp" data-delay=".1">Address</h6>
                                         <div class="wgs-body">
                                             <ul class="wgs-list mt-3 animated" data-animate="fadeInUp" data-delay=".2">
-                                                <li>ECLIPSE Crypto <br> Company Number ALX455</li>
+                                                <li>EKLIPSE Crypto <br> Company Number ALX455</li>
                                                 <li>2237 Gnatty Creek Road <br> Huntington, NY 11743</li>
                                             </ul>
                                         </div>
@@ -1308,7 +1240,7 @@
                                             <ul class="wgs-links wgs-links-s3 animated" data-animate="fadeInUp" data-delay=".4">
                                                 <li><a href="#">Whitepaper</a></li>
                                                 <li><a href="#">One Pager</a></li>
-                                                <li><a href="#">Market Research</a></li>
+                                               
                                             </ul>
                                         </div>
                                     </div>
@@ -1318,10 +1250,9 @@
                                         <h6 class="wgs-title text-white animated" data-animate="fadeInUp" data-delay=".5">Company</h6>
                                         <div class="wgs-body">
                                             <ul class="wgs-links wgs-links-s3 animated" data-animate="fadeInUp" data-delay=".6">
-                                                <li><a href="#">Home</a></li>
+                                               
                                                 <li><a href="#">Tokens</a></li>
-                                                <li><a href="#">Team</a></li>
-                                                <li><a href="#">Roadmap</a></li>
+                                                <li>(1,000,000,000) EKLIPSE SUPPLIED</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -1335,14 +1266,8 @@
                                         </div>
                                         <div class="wgs-body">
                                             <div class="wgs-subscribe wgs-subscribe-s2">
-                                                <p class="animated" data-animate="fadeInUp" data-delay=".8">ECLIPSE Crypto All the best selling ICO Template. It’s most stylish and modern design with isometric illustration which makes website gorgeous</p>
-                                                <ul class="social pt-2">
-                                                    <li class="animated" data-animate="fadeInUp" data-delay=".9"><a href="#"><em class="social-icon fab fa-facebook-f"></em></a></li>
-                                                    <li class="animated" data-animate="fadeInUp" data-delay=".95"><a href="#"><em class="social-icon fab fa-twitter"></em></a></li>
-                                                    <li class="animated" data-animate="fadeInUp" data-delay="1"><a href="#"><em class="social-icon fab fa-medium-m"></em></a></li>
-                                                    <li class="animated" data-animate="fadeInUp" data-delay="1.05"><a href="#"><em class="social-icon fab fa-github"></em></a></li>
-                                                    <li class="animated" data-animate="fadeInUp" data-delay="1.1"><a href="#"><em class="social-icon fab fa-bitcoin"></em></a></li>
-                                                </ul>
+                                                <p class="animated" data-animate="fadeInUp" data-delay=".8">EKLIPSE GLOBAL</p>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -1350,7 +1275,7 @@
                             </div><!-- .row -->
                             <div class="footer-bottom pdt-r">
                                 <div class="copyright-text copyright-text-s1 text-center text-sm-start text-lg-center">
-                                    <p>&copy; 2022 ECLIPSE Crypto Template. Template Made by <a href="./">Softnio.</a> <a class="ms-4" href="./">Privacy policy</a></p>
+                                    <p>&copy; 2022 EKLIPSEGLOBAL</p>
                                 </div>
                             </div>
                         </div><!-- .block @e -->

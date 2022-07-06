@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Member;
+use \App\Http\Controllers\Auth;
+
 
 class MemberController extends Controller
 {
@@ -14,7 +18,11 @@ class MemberController extends Controller
     public function index()
     {
         //
-        return view('member');
+        $member = User::where('email', '=', auth()->user()->email)->first();
+      
+            return view('member');
+        
+       
     }
 
     /**
@@ -36,6 +44,15 @@ class MemberController extends Controller
     public function store(Request $request)
     {
         //
+        
+        
+             $plan = $request->payOption == 'tranxETH' ? 'Affiliate' : ($request->payOption == 'tranxLTC' ? 'Trader' : 'Miner');
+        $member = User::where('email', '=', auth()->user()->email)->first();
+        $member->status = $plan;
+        $member->save();
+        return redirect('member');
+        
+       
     }
 
     /**
@@ -82,4 +99,7 @@ class MemberController extends Controller
     {
         //
     }
+
+    //custom function
+   
 }

@@ -44,7 +44,7 @@ class SecurityController extends Controller
          //validate file extension
          $this->validate($request, [
             //'image'=>'mimes:jpeg,png,jpg|max:2048',
-            'security_id' => 'required',
+          /*   'security_id' => 'required',
             'bank_name_1'  => 'required',
             'account_number_1'  => 'required',
             'account_name_1'  => 'required',
@@ -59,7 +59,7 @@ class SecurityController extends Controller
             'account_name_4'  => 'required',
             'bitcoin_address'  => 'required',
             'skrill_address'  => 'required',
-            'face_img'  => 'required',
+            'face_img'  => 'required', */
            
         
 

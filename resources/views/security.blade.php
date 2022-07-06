@@ -72,7 +72,7 @@
                                     <div class="from-step-content">
                                         <div class="note note-md note-info note-plane">
                                             <em class="fas fa-info-circle"></em>
-                                            <p>Please carefully fill out the form. Your can’t edit these details once you submitted the form.</p>
+                                            <p>Please carefully fill out the form.</p>
                                         </div>
                                         <div class="gaps-2x"></div>
                                         <div class="row">

@@ -81,7 +81,7 @@ class DepositController extends Controller
             $datas = $decoded_json['data'];
             $amount =  $datas['amount'];
 
-            $user = User::where('email', '=', $email)->first();
+            $user = User::where('email', '=', auth()->user()->email)->first();
             $real_amount = $amount/100;
             $user->balance = auth()->user()->balance + $real_amount;
             $user->save();

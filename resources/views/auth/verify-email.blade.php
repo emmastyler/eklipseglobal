@@ -42,14 +42,14 @@
                                                 </x-button>
                                             </div>
                                         </form><br/>
-                                        <a href="/" class="btn btn-md btn-outline btn-secondary">OK</a>
+                                        {{-- <a href="/" class="btn btn-md btn-outline btn-secondary">OK</a> --}}
                                         <div class="mt-4 flex items-center justify-between">
 
                                             <form method="POST" action="{{ route('logout') }}">
                                                 @csrf
                                 
-                                                <button type="submit" class="underline text-sm text-gray-600 hover:text-gray-900">
-                                                    {{ __('Log Out') }}
+                                                <button type="submit" class="btn btn-md btn-outline btn-secondary">
+                                                    {{ __('ok') }}
                                                 </button>
                                             </form>
                                         </div>
